@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 import "./styles.css";
@@ -13,6 +13,11 @@ export default function Leitor() {
       setScan(false);
     }
   };
+  useEffect(()=>{
+    if(window.sessionStorage.getItem('id_pessoa') === null && window.sessionStorage.getItem('id_avaliador') === null){
+      window.location.href = '/'
+    }
+  });
 
   return (
     <div className="App">

@@ -1,7 +1,14 @@
 import { BrowserView, MobileView } from "react-device-detect";
 import Questoes from '../components/Questoes'
 const Questao = () => {
+
+    useEffect(()=>{
+      if(window.sessionStorage.getItem('id_pessoa') === null && window.sessionStorage.getItem('id_avaliador') === null){
+      window.location.href = '/'
+    }
+  });
    return (
+    
     <div>
       <BrowserView>
         <h1 style={{ textAlign: "center" }}>

@@ -1,24 +1,24 @@
-import React,{useState} from "react";
+import React, { useEffect, useState } from "react";
 import CardAcompanhamento from "../components/CardAcompanhamento";
 // import Questionario from '../components/Questionario'
-import { BrowserView, MobileView } from "react-device-detect";
+import { BrowserView, isWindows, MobileView } from "react-device-detect";
 import VotacaoAberta from "../components/VotacaoAberta";
 
 const Avaliacao = () => {
-
+  useEffect(()=>{
+    if(window.sessionStorage.getItem('id_pessoa') === null && window.sessionStorage.getItem('id_avaliador') === null){
+      window.location.href = '/'
+    }
+  });
   return (
     <div>
       <BrowserView>
-        <VotacaoAberta/>
+        <VotacaoAberta />
       </BrowserView>
       <MobileView>
-        
-          <CardAcompanhamento />        
-        
-       
+        <CardAcompanhamento />
       </MobileView>
     </div>
   );
-  
 };
 export default Avaliacao;

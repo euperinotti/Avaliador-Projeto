@@ -10,6 +10,7 @@ const Questoes = () => {
   const [quest3, setQuest3] = useState(0);
   const [quest4, setQuest4] = useState(0);
 
+
   const Check = async () => {
     const json = axios.post(
       "https://www4.fag.edu.br/api_summit/fag.php",
@@ -55,6 +56,9 @@ const Questoes = () => {
   
   useEffect(() => {
     Check();
+    if(window.sessionStorage.getItem('id_pessoa') === null && window.sessionStorage.getItem('id_avaliador') === null){
+      window.location.href = '/'
+    }
   });
 
 
