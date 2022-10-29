@@ -14,8 +14,8 @@ export const Form = styled.form`
   align-items:center;
   gap:1rem;
   margin:0 auto;
-  margin-top:22rem;
-  width:16%;
+  margin-top:20%;
+  width:25rem;
 
   img{
     width:30rem;
@@ -26,17 +26,17 @@ export const Input = styled.input`
   padding-left:1rem;
   border-radius:0.5rem;
   border:none;
-  width:80%;
+  width:100%;
   margin:0 auto;
 
 `
 export const Botao = styled.button`
 
-  // padding: 1rem 0.3rem 1rem 0.3rem;
+
   height:2rem;
-  width:85%;
+  width:15rem;
   margin:0 auto;
-    border-radius:0.5rem;
+  border-radius:0.5rem;
   border:none;
   background-color:#228CC8;
   color:#fff;
