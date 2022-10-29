@@ -14,7 +14,7 @@ export const Form = styled.form`
   align-items:center;
   gap:1rem;
   margin:0 auto;
-  margin-top:22rem;
+  margin-top:18%;
   width:16%;
 
   img{
