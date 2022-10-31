@@ -19,7 +19,6 @@ const Resultado = () => {
   };
   useEffect(() => {
     check();
-    console.log(tab);
   }, []);
   return (
     <>
@@ -36,18 +35,16 @@ const Resultado = () => {
           </thead>
           <tbody>
             {tab.map((row) => (
-                <tr>
-                  <th>{row.id_projeto}</th>
-                  <th style={{ width: "70%" }}>{row.titulo}</th>
-                <th>{row.categoria === 1?'Produto':'Solução'}</th>
-                
-                  {popular.map((nt) => (
-                    <th>{nt.id_projeto === row.id_projeto ? '1' : '0'}</th>
-                    
-                  ))}
+              <tr>
+                <th>{row.id_projeto}</th>
+                <th style={{ width: "70%" }}>{row.titulo}</th>
+                <th>{row.categoria === 1 ? "Produto" : "Solução"}</th>
+
+                {popular.map((nt) => (
+                  <th>{nt.id_projeto === row.id_projeto ? "1" : "0"}</th>
+                ))}
                 <th>{row.nota}</th>
-                </tr>
-              
+              </tr>
             ))}
           </tbody>
         </table>
