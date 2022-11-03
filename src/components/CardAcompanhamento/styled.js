@@ -22,6 +22,7 @@ export const Number = styled.div`
   justify-content: space-around;
   align-items: center;
   margin-top:-15px;
+  margin-bottom:5%;
 
 
 `
@@ -29,11 +30,11 @@ export const Text = styled.p`
   display:flex;
   flex-direction: column;
   justify-content: center;
-  width:40%;
+  width:45%;
   background-color: #fff;
-  height:3rem;
+  height:6rem;
   border-radius:1rem;
-  padding:15px;
+  padding-top:1%;
   font-size:0.8rem;
   text-align:center;
 
