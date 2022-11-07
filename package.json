@@ -24,7 +24,7 @@
     "typescript": "4.4.2"
   },
   "scripts": {
-    "start": "PORT=5000react-scripts start",
+    "start": "PORT=5000 react-scripts start",
     "serv": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

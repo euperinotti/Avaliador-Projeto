@@ -56,9 +56,7 @@ const Questoes = () => {
   
   useEffect(() => {
     Check();
-    if(window.sessionStorage.getItem('id_pessoa') === null && window.sessionStorage.getItem('id_avaliador') === null){
-      window.location.href = '/'
-    }
+
   });
 
 

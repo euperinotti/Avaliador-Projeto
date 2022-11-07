@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BrowserView, MobileView } from "react-device-detect";
 import Questoes from '../components/Questoes'
 const Questao = () => {
