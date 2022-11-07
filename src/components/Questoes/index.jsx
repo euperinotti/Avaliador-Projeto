@@ -61,7 +61,7 @@ const Questoes = () => {
 
 
   return (
-    <>
+    <div style={{marginTop:'4rem'}}>
       <S.Card>
         <h4>{titulo}</h4>
       </S.Card>
@@ -205,7 +205,7 @@ const Questoes = () => {
           
 
       </S.Card>
-    </>
+    </div>
   );
 };
 export default Questoes;

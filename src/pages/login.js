@@ -11,7 +11,6 @@ const Login = () => {
     window.sessionStorage.removeItem('id_avaliador');
     window.sessionStorage.removeItem('nome');
     window.sessionStorage.removeItem('tipo');
-    window.sessionStorage.removeItem('id_avaliador');
     window.sessionStorage.removeItem('isVisible');
   },[]);
   return (

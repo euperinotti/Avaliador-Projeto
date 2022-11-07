@@ -18,6 +18,7 @@ const CardAcompanhamento = () => {
 
     );
     const { avaliados } = (await json).data;
+    
     setAvaliados(avaliados);
   }
   const checkNaoAvaliados = async () => {
