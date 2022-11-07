@@ -5,7 +5,7 @@ const Questao = () => {
 
   //   useEffect(()=>{
   //     if(window.sessionStorage.getItem('id_pessoa') === null && window.sessionStorage.getItem('id_avaliador') === null){
-  //     window.location.href = '/'
+  //     window.location.href = '/';
   //   }
   // });
    return (
