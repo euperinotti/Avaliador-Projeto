@@ -30,7 +30,7 @@ export const Text = styled.p`
   display:flex;
   flex-direction: column;
   justify-content: center;
-  width:95%;
+  width:100%;
   background-color: #fff;
   
   border-radius:1rem;
@@ -94,10 +94,12 @@ export const Botao = styled.button`
 
 
   height:3rem;
-  width:85%;
+  width:80%;
+  margin:0 auto;
   margin-left:2rem;
   margin-top:1rem;
-    border-radius:0.5rem;
+  margin-bottom:6rem;
+  border-radius:0.5rem;
   border:none;
   background-color:#228CC8;
   color:#fff;

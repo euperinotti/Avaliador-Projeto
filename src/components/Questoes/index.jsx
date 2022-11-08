@@ -24,7 +24,8 @@ const Questoes = () => {
     const { trabalho, titulo,erro } = (await json).data;
     setTrabalho(trabalho);
     setTitulo(titulo);
-    console.log(json.data);
+    console.log(titulo);
+    
     if (erro === 1) {
       alert('Trabalho ja avaliado.');
       window.location.href = '/avaliacao';

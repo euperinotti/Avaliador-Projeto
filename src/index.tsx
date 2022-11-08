@@ -6,7 +6,7 @@ import Resultado from "./components/Resultado";
 import Avaliacao from "./pages/avaliacao";
 import Login from "./pages/login";
 import Questao from "./pages/questao";
-
+import SemAvaliacao from "./components/SemAvaliacao";
 const rootElement = document.getElementById("root");
 render(
   <BrowserRouter>
@@ -16,6 +16,7 @@ render(
       <Route path="/leitor" element={<Leitor />} />
       <Route path="/questao" element={<Questao />} />
       <Route path="/resultado" element={<Resultado />} />
+      <Route path="/semavaliacao" element={<SemAvaliacao />} />
     </Routes>
   </BrowserRouter>
   , rootElement);

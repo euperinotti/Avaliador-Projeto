@@ -27,7 +27,12 @@ const FormLogin2 = () => {
     console.log(json.data)
     if (id_pessoa) {
       window.sessionStorage.setItem('id_pessoa', id_pessoa);
-      window.location.href = '/avaliacao';
+      if(id_pessoa === 1){
+        window.location.href = '/resultado';
+      }else{
+        window.location.href = '/avaliacao';
+      }
+      
     } else {
       alert("Login ou senha invalidos.");
     }

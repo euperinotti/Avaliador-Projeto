@@ -26,6 +26,7 @@ const CardAcompanhamento = () => {
       "https://www4.fag.edu.br/api_summit/fag.php",
       JSON.stringify({
         PG: "semAvaliacao",
+        tipo:window.sessionStorage.getItem('tipo'),  
       })
 
     );
@@ -59,7 +60,7 @@ const CardAcompanhamento = () => {
         
       </S.Number>
             <S.Number>
-        <S.Text>Trabalhos sem avaliação:  <strong>{sem_avaliacao}</strong></S.Text>
+        <S.Text onClick={()=>{window.location.href ='/semavaliacao'}}>Trabalhos sem avaliação:  <strong>{sem_avaliacao}</strong></S.Text>
         <S.Text onClick={()=>{window.location.href="/leitor"}}>Iniciar Avaliação</S.Text>
         
       </S.Number>
