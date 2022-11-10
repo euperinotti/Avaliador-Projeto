@@ -88,17 +88,17 @@ const Questoes = () => {
               className="slider"
             />
             <datalist id="tickmarks">
-                <option value="0" label=""></option>
-                <option value="1" label=""></option>
-                <option value="2" label=""></option>
-                <option value="3" label=""></option>
-                <option value="4" label=""></option>
-                <option value="5" label=""></option>
-                <option value="6" label=""></option>
-                <option value="7" label=""></option>
-                <option value="8" label=""></option>
-                <option value="9" label=""></option>
-                <option value="10" label=""></option>
+                <option value="0" label="0"></option>
+                <option value="1" label="."></option>
+                <option value="2" label="."></option>
+                <option value="3" label="."></option>
+                <option value="4" label="."></option>
+                <option value="5" label="5"></option>
+                <option value="6" label="."></option>
+                <option value="7" label="."></option>
+                <option value="8" label="."></option>
+                <option value="9" label="."></option>
+                <option value="10" label="10"></option>
               </datalist>
             <br/>
           </S.Text>
@@ -121,17 +121,17 @@ const Questoes = () => {
                 className="slider"
               />
               <datalist id="tickmarks">
-                <option value="0" label=""></option>
-                <option value="1" label=""></option>
-                <option value="2" label=""></option>
-                <option value="3" label=""></option>
-                <option value="4" label=""></option>
-                <option value="5" label=""></option>
-                <option value="6" label=""></option>
-                <option value="7" label=""></option>
-                <option value="8" label=""></option>
-                <option value="9" label=""></option>
-                <option value="10" label=""></option>
+              <option value="0" label="0"></option>
+                <option value="1" label="."></option>
+                <option value="2" label="."></option>
+                <option value="3" label="."></option>
+                <option value="4" label="."></option>
+                <option value="5" label="5"></option>
+                <option value="6" label="."></option>
+                <option value="7" label="."></option>
+                <option value="8" label="."></option>
+                <option value="9" label="."></option>
+                <option value="10" label="10"></option>
               </datalist>
               <br/>
             </S.Text>
@@ -154,17 +154,17 @@ const Questoes = () => {
                 className="slider"
               />
               <datalist id="tickmarks">
-                <option value="0" label=""></option>
-                <option value="1" label=""></option>
-                <option value="2" label=""></option>
-                <option value="3" label=""></option>
-                <option value="4" label=""></option>
-                <option value="5" label=""></option>
-                <option value="6" label=""></option>
-                <option value="7" label=""></option>
-                <option value="8" label=""></option>
-                <option value="9" label=""></option>
-                <option value="10" label=""></option>
+              <option value="0" label="0"></option>
+                <option value="1" label="."></option>
+                <option value="2" label="."></option>
+                <option value="3" label="."></option>
+                <option value="4" label="."></option>
+                <option value="5" label="5"></option>
+                <option value="6" label="."></option>
+                <option value="7" label="."></option>
+                <option value="8" label="."></option>
+                <option value="9" label="."></option>
+                <option value="10" label="10"></option>
               </datalist>
               <br/>
             </S.Text>
@@ -188,17 +188,17 @@ const Questoes = () => {
                 className="slider"
               />
               <datalist id="tickmarks">
-                <option value="0" label=""></option>
-                <option value="1" label=""></option>
-                <option value="2" label=""></option>
-                <option value="3" label=""></option>
-                <option value="4" label=""></option>
-                <option value="5" label=""></option>
-                <option value="6" label=""></option>
-                <option value="7" label=""></option>
-                <option value="8" label=""></option>
-                <option value="9" label=""></option>
-                <option value="10" label=""></option>
+              <option value="0" label="0"></option>
+                <option value="1" label="."></option>
+                <option value="2" label="."></option>
+                <option value="3" label="."></option>
+                <option value="4" label="."></option>
+                <option value="5" label="5"></option>
+                <option value="6" label="."></option>
+                <option value="7" label="."></option>
+                <option value="8" label="."></option>
+                <option value="9" label="."></option>
+                <option value="10" label="10"></option>
               </datalist>
               <br/>
             </S.Text>
