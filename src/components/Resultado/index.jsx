@@ -7,6 +7,7 @@ const Resultado = () => {
   const [popular, setPopular] = useState([]);
   const [tabs2, setTabs2] = useState([]);
   const [populars2, setPopulars2] = useState([]);
+  const [extra1, setExtra1] = useState(0);
   const check = async () => {
     const json = axios.post(
       "https://www4.fag.edu.br/api_summit/fag.php",
@@ -45,8 +46,9 @@ const Resultado = () => {
                 <th>{row.categoria === 1 ? "Produto" : "Solução"}</th>
                 <th>
                 {popular.map((nt,key) => (
-                  nt.id_projeto === row.id_projeto ? (key === 1 ? 10:(key === 2 ? 5:3)):'' 
+                  nt.id_projeto === row.id_projeto ? (key === 0 ? 10 : (key === 1 ? 5:3)):'' 
                 ))}
+                
                 </th>
                 <th>{row.nota}</th>
               </tr>
@@ -75,10 +77,15 @@ const Resultado = () => {
                 <th>{row1.categoria === 1 ? "Solução" : "Produto"}</th>
                 <th>
                 {populars2.map((nt1,key) => (
-                  nt1.id_projeto === row1.id_projeto ? (key === 1 ? 10:(key === 2 ? 5:3)):'' 
+                  nt1.id_projeto === row1.id_projeto ? (key === 0 ? 10 : (key === 1 ? 5:3)):'' 
                 ))}
+                
                 </th>
-                <th>{row1.nota}</th>
+                <th>
+                {row1.nota}
+                
+                </th>
+                
               </tr>
             ))}
           </tbody>
