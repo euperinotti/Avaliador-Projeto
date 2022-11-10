@@ -26,7 +26,8 @@ const CardAcompanhamento = () => {
       "https://www4.fag.edu.br/api_summit/fag.php",
       JSON.stringify({
         PG: "semAvaliacao",
-        tipo:window.sessionStorage.getItem('tipo'),  
+        tipo:window.sessionStorage.getItem('tipo'),
+        id_avaliador: window.sessionStorage.getItem('id_avaliador')  
       })
 
     );

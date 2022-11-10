@@ -9,6 +9,7 @@ const semAvaliacao = () => {
       JSON.stringify({
         PG: "semAvaliacaoList",
         tipo: window.sessionStorage.getItem('tipo'),
+        id_avaliador: window.sessionStorage.getItem('id_avaliador'),
       })
     );
     const { dados } = (await json).data;
@@ -29,14 +30,14 @@ const semAvaliacao = () => {
         <thead className="thead-light">
           <tr>
             <th>Titulo</th>
-            <th>Avaliações</th>
+            <th>Cód</th>
           </tr>
         </thead>
         <tbody style={{textAlign:'center'}}>
           {list.map((row) => (
             <tr>
               <th>{row.titulo}</th>
-              <th>{row.avaliacoes}</th>
+              <th>{row.id_projeto}</th>
             </tr>
           ))}
         </tbody>

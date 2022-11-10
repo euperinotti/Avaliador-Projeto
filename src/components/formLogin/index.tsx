@@ -23,13 +23,23 @@ const FormLogin = () => {
         })
       )
 
-    const { id_avaliador, tipo, nome } = (await json).data
+    const { id_avaliador, tipo, nome,acesso } = (await json).data
+    console.log(json)
     if (nome) {
       window.sessionStorage.setItem('nome', nome);
       window.sessionStorage.setItem('tipo', tipo);
-      window.sessionStorage.setItem('id_avaliador', id_avaliador);
+      
       window.sessionStorage.setItem('isVisible', 'inicial');
-      window.location.href = '/avaliacao'
+      if(acesso === 'popular'){
+        window.sessionStorage.setItem('id_pessoa', id_avaliador);
+        window.location.href = '/votopopular';
+      }else if(acesso ==='avaliador'){
+        window.sessionStorage.setItem('id_avaliador', id_avaliador);
+        window.location.href = '/avaliacao';
+      }else{
+        window.location.href = '/resultado';
+      }
+      
     } else {
       alert("Login ou senha invalidos.");
     }

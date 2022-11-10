@@ -3,7 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.section`
   width:80%;
   margin:0 auto;
-
+@media (max-width:728px){
+  width:100%;
+  margin:0 auto;
+}
 
 `
 export const Form = styled.div`
@@ -16,13 +19,27 @@ export const Form = styled.div`
   margin:0 auto;
   margin-top:18%;
   width:16%;
+  @media (max-width:728px){
+    width:44%;
 
+  }
   img{
     width:30rem;
+  }
+  @media (max-width:728px){
+    img{
+      width:20rem;
+    }
   }
   select{
     height:2rem;
     font-size:1rem;
+  }
+  @media (max-width:728px){
+    select{
+      width:25rem;
+    }
+
   }
   h1{
     color:#fff;
@@ -39,6 +56,7 @@ export const Input = styled.input`
   border:none;
   width:80%;
   margin:0 auto;
+
 
 `
 export const Botao = styled.button`
