@@ -5,7 +5,9 @@ import Logo from "./logo_login.png";
 
 const VotacaoAberta = () => {
   const [retornos, setRetorno] = useState([]);
+  const [retornos2, setRetorno2] = useState([]);
   const [voto, setVoto] = useState("");
+  const [voto2, setVoto2] = useState("");
   const headlerSubmit = () => {
     e.preventDefault();
   };
@@ -22,9 +24,10 @@ const VotacaoAberta = () => {
       })
     );
 
-    const { dados } = (await json).data;
+    const { dados, dados2 } = (await json).data;
 
     setRetorno(dados);
+    setRetorno2(dados2);
   };
   const checkVoto = async () => {
     const json = axios.post(
@@ -78,9 +81,19 @@ const VotacaoAberta = () => {
           onChange={(v) => setVoto(v.target.value)}
           onClick={voto}
         >
-          <option> Selecione o Projeto para seu voto</option>
+          <option> Selecione o serviço</option>
           {retornos.map((retorno) => (
             <option value={retorno.id_projeto}>{retorno.titulo}</option>
+          ))}
+        </select>
+        <select
+          required
+          onChange={(v) => setVoto2(v.target.value)}
+          onClick={voto2}
+        >
+          <option> Selecione o produto</option>
+          {retornos2.map((retorno2) => (
+            <option value={retorno2.id_projeto}>{retorno2.titulo}</option>
           ))}
         </select>
         <S.Botao onClick={enviar}>Enviar Voto</S.Botao>
