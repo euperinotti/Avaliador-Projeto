@@ -24,8 +24,6 @@ const FormLogin2 = () => {
 
     const { id_pessoa } = (await json).data
 
-    console.log(json.data)
-
     if (id_pessoa) {
       window.sessionStorage.setItem('id_pessoa', id_pessoa);
       if (id_pessoa === 1) {

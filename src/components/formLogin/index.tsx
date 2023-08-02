@@ -14,7 +14,7 @@ const FormLogin = () => {
 
   const Check = async (e: any) => {
     const json = axios.post(
-      'https://www4.fag.edu.br/api_summit/fag.php',
+      'https://www4.fag.edu.br/api_summit/login.php',
       JSON.stringify({
         login: login,
         senha: senha,
@@ -22,9 +22,7 @@ const FormLogin = () => {
       })
     )
 
-    const { id_avaliador, tipo, nome, acesso } = (await json).data
-
-    console.log(json)
+    const { id, tipo, nome, acesso } = (await json).data
 
     if (nome) {
       window.sessionStorage.setItem('nome', nome);
@@ -32,10 +30,10 @@ const FormLogin = () => {
       window.sessionStorage.setItem('isVisible', 'inicial');
 
       if (acesso === 'popular') {
-        window.sessionStorage.setItem('id_pessoa', id_avaliador);
+        window.sessionStorage.setItem('id', id);
         window.location.href = '/votopopular';
       } else if (acesso === 'avaliador') {
-        window.sessionStorage.setItem('id_avaliador', id_avaliador);
+        window.sessionStorage.setItem('id', id);
         window.location.href = '/avaliacao';
       } else {
         window.location.href = '/resultado';
