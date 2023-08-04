@@ -10,9 +10,9 @@ const CardAcompanhamento = () => {
 
   const checkTrabalhos = async () => {
     const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/fag.php",
+      "https://www4.fag.edu.br/api_summit/rotas/avaliados.php",
       JSON.stringify({
-        avaliador: window.sessionStorage.getItem('id_avaliador'),
+        avaliador: window.sessionStorage.getItem('id'),
         PG: "avaliados",
       })
 
@@ -23,11 +23,11 @@ const CardAcompanhamento = () => {
   }
   const checkNaoAvaliados = async () => {
     const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/fag.php",
+      "https://www4.fag.edu.br/api_summit/rotas/sem-avaliacao.php",
       JSON.stringify({
         PG: "semAvaliacao",
         tipo:window.sessionStorage.getItem('tipo'),
-        id_avaliador: window.sessionStorage.getItem('id_avaliador')  
+        id_avaliador: window.sessionStorage.getItem('id')  
       })
 
     );
@@ -36,9 +36,9 @@ const CardAcompanhamento = () => {
   }
   const checkMedia = async () => {
     const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/fag.php",
+      "https://www4.fag.edu.br/api_summit/rotas/media.php",
       JSON.stringify({
-        avaliador: window.sessionStorage.getItem('id_avaliador'),
+        avaliador: window.sessionStorage.getItem('id'),
         PG: "media",
       })
 

@@ -13,10 +13,10 @@ const Questoes = () => {
 
   const Check = async () => {
     const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/fag.php",
+      "https://www4.fag.edu.br/api_summit/rotas/evento.php",
       JSON.stringify({
         qr: window.sessionStorage.getItem('trabalho'),
-        id_avaliador: window.sessionStorage.getItem('id_avaliador'),
+        id_avaliador: window.sessionStorage.getItem('id'),
         PG: "evento",
       })
     );

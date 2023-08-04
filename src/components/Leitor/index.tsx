@@ -14,7 +14,7 @@ export default function Leitor() {
     }
   };
   useEffect(()=>{
-    if(window.sessionStorage.getItem('id_pessoa') === null && window.sessionStorage.getItem('id_avaliador') === null){
+    if(window.sessionStorage.getItem('id') === null){
       window.location.href = '/'
     }
   });

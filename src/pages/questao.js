@@ -4,7 +4,7 @@ import Questoes from '../components/Questoes'
 const Questao = () => {
 
     useEffect(() => {
-      if(window.sessionStorage.getItem('id_avaliador') === null){
+      if(window.sessionStorage.getItem('id') === null){
         window.location.href = '/';
       }
   },[]);
