@@ -14,7 +14,7 @@ const FormLogin2 = () => {
 
   const Check = async () => {
     const json = axios.post(
-      'https://www4.fag.edu.br/api_summit/fag.php',
+      'https://www4.fag.edu.br/api_summit/rotas/login.php',
       JSON.stringify({
         login: login,
         senha: senha,
@@ -22,11 +22,11 @@ const FormLogin2 = () => {
       })
     )
 
-    const { id_pessoa } = (await json).data
+    const { id } = (await json).data
 
-    if (id_pessoa) {
-      window.sessionStorage.setItem('id_pessoa', id_pessoa);
-      if (id_pessoa === 1) {
+    if (id) {
+      window.sessionStorage.setItem('id', id);
+      if (id === 1) {
         window.location.href = '/resultado';
       } else {
         window.location.href = '/avaliacao';

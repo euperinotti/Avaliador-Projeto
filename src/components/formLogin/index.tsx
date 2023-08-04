@@ -14,7 +14,7 @@ const FormLogin = () => {
 
   const Check = async (e: any) => {
     const json = axios.post(
-      'https://www4.fag.edu.br/api_summit/login.php',
+      'https://www4.fag.edu.br/api_summit/rotas/login.php',
       JSON.stringify({
         login: login,
         senha: senha,
