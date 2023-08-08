@@ -17,8 +17,7 @@ const FormLogin = () => {
       'https://www4.fag.edu.br/api_summit/rotas/login.php',
       JSON.stringify({
         login: login,
-        senha: senha,
-        PG: 'login'
+        senha: senha
       })
     )
 
@@ -27,6 +26,7 @@ const FormLogin = () => {
     if (nome) {
       window.sessionStorage.setItem('nome', nome);
       window.sessionStorage.setItem('tipo', tipo);
+      window.sessionStorage.setItem('acesso', acesso);
       window.sessionStorage.setItem('isVisible', 'inicial');
 
       if (acesso === 'popular') {

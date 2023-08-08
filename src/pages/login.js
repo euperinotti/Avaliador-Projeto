@@ -15,12 +15,12 @@ const Login = () => {
   }, []);
   return (
     <div>
-      <BrowserView>
+      {/* <BrowserView>
         <FormLogin2 />
       </BrowserView>
-      <MobileView>
+      <MobileView> */}
         <FormLogin />
-      </MobileView>
+      {/* </MobileView> */}
     </div>
   );
 }

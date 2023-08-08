@@ -4,66 +4,70 @@ import * as S from "./styled";
 import Logo from "./logo_login.png";
 
 const VotacaoAberta = () => {
-  const [retornos, setRetorno] = useState([]);
-  const [retornos2, setRetorno2] = useState([]);
+  const [projetos, setProjetos] = useState([]);
+  const [projetos2, setProjetos2] = useState([]);
   const [voto, setVoto] = useState("");
   const [voto2, setVoto2] = useState("");
-  const headlerSubmit = () => {
+  const handlerSubmit = (e) => {
     e.preventDefault();
+    enviar()
   };
 
-  useEffect(() => {
-    participante();
-    checkVoto();
+  useEffect(async () => {
+    await participante().catch(console.error);
+    await checkVoto().catch(console.error);
   }, []);
+
   const participante = async () => {
-    const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/fag.php",
-      JSON.stringify({
-        PG: "participantes",
-      })
+    const json = await axios.get(
+      "https://www4.fag.edu.br/api_summit/rotas/participantes.php"
     );
 
-    const { dados, dados2 } = (await json).data;
+    const projetosCategoria1 = json.data.categoria1;
+    const projetosCategoria2 = json.data.categoria2;
 
-    setRetorno(dados);
-    setRetorno2(dados2);
+    setProjetos(projetosCategoria1);
+    setProjetos2(projetosCategoria2);
   };
+
   const checkVoto = async () => {
-    const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/fag.php",
-      JSON.stringify({
-        PG: "checkvoto",
-        participante:window.sessionStorage.getItem("id_pessoa"),
-      })
+    const json = await axios.get(
+      "https://www4.fag.edu.br/api_summit/rotas/check-voto-popular.php", {
+      params: window.sessionStorage.getItem('id')
+    }
     );
 
-    const { check } = (await json).data;
-      
-    if (check === 1) {
+    const { codigo } = json.data;
+
+    if (codigo === 200) {
       alert('Só pode ser realizado 1 voto por usuario.');
       window.location.href = '/';
     }
   };
+
   const enviar = async () => {
-    const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/fag.php",
+
+    const json = await axios.post(
+      "https://www4.fag.edu.br/api_summit/rotas/voto-popular.php",
       JSON.stringify({
         id_projeto: voto,
-        id_pessoa: window.sessionStorage.getItem("id_pessoa"),
-        PG: "voto",
+        id_pessoa: window.sessionStorage.getItem('id'),
       })
     );
 
-    const { status } = (await json).data;
-    if (status === 1) {
+    const { status } = json.data;
+    if (status === 200) {
       alert('Obrigado pelo seu voto');
       window.location.href = '/';
     } else {
       alert('Ops tivemos um erro, favor atualizar a pagina e tentar de novo.')
     }
-    
+
   };
+
+  const votoHandler = (e) => {
+    setVoto(e.target.value)
+  }
 
   return (
     <S.Container>
@@ -76,27 +80,25 @@ const VotacaoAberta = () => {
           <br />
           <strong>*</strong> Cada usuario tem direito a 1 voto.
         </p>
+
         <select
+          onChange={e => setProjetos(e.target.value)}
           required
-          onChange={(v) => setVoto(v.target.value)}
-          onClick={voto}
         >
-          <option> Selecione o serviço</option>
-          {retornos.map((retorno) => (
-            <option value={retorno.id_projeto}>{retorno.titulo}</option>
-          ))}
+          {projetos.map((e, index) => {
+            return <option value={e.id_projeto} key={index}>{e.titulo}</option>
+          })}
         </select>
-        <select
-          required
-          onChange={(v) => setVoto2(v.target.value)}
-          onClick={voto2}
-        >
-          <option> Selecione o produto</option>
-          {retornos2.map((retorno2) => (
-            <option value={retorno2.id_projeto}>{retorno2.titulo}</option>
-          ))}
+
+        <select>
+          <option>A</option>
+          <option>A</option>
+          <option>A</option>
+          <option>A</option>
+          <option>A</option>
         </select>
-        <S.Botao onClick={enviar}>Enviar Voto</S.Botao>
+
+        <S.Botao>Enviar Voto</S.Botao>
       </S.Form>
     </S.Container>
   );

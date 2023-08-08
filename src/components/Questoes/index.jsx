@@ -12,46 +12,46 @@ const Questoes = () => {
 
 
   const Check = async () => {
-    const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/rotas/evento.php",
-      JSON.stringify({
-        qr: window.sessionStorage.getItem('trabalho'),
-        id_avaliador: window.sessionStorage.getItem('id'),
-        PG: "evento",
-      })
+    const json = axios.get(
+      "https://www4.fag.edu.br/api_summit/rotas/projeto.php", {
+        params: {
+          id: window.sessionStorage.getItem('id'),
+          qr: window.sessionStorage.getItem('trabalho')
+        }
+      }
     );
 
-    const { trabalho, titulo,erro } = (await json).data;
+    const { idProjeto, titulo, erro } = (await json).data;
     setTrabalho(trabalho);
     setTitulo(titulo);
-    console.log(titulo);
     
-    if (erro === 1) {
+    if (erro) {
       alert('Trabalho ja avaliado.');
       window.location.href = '/avaliacao';
-    }else if (erro === 2) {
-      alert('Trabalho não disponivel para esse avaliador.');
-      window.location.href = '/avaliacao';
     }
+    // }else if (erro === 2) {
+    //   alert('Trabalho não disponivel para esse avaliador.');
+    //   window.location.href = '/avaliacao';
+    // }
   };
+
   const Envio = async () => {
     
     const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/fag.php",
+      "https://www4.fag.edu.br/api_summit/rotas/avaliado.php",
       JSON.stringify({
-        avaliador: window.sessionStorage.getItem('id_avaliador'),
+        avaliador: window.sessionStorage.getItem('id'),
         quest1: quest1,
         quest2: quest2,
         quest3: quest3,
         quest4: quest4,
-        id_projeto: trabalho,
-        PG: "avaliado",
+        id_projeto: idProjeto,
       })
     );
 
-    const { avaliacao } = (await json).data;
+    const { id_avaliacao } = (await json).data;
     
-    if (avaliacao !== 0) {
+    if (id_avaliacao) {
       window.sessionStorage.removeItem('trabalho');
       window.location.href = '/avaliacao';
     }

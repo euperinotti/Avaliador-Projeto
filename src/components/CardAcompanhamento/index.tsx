@@ -9,43 +9,45 @@ const CardAcompanhamento = () => {
 
 
   const checkTrabalhos = async () => {
-    const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/rotas/avaliados.php",
-      JSON.stringify({
-        avaliador: window.sessionStorage.getItem('id'),
-        PG: "avaliados",
-      })
-
+    const json = axios.get(
+      "https://www4.fag.edu.br/api_summit/rotas/avaliados.php", {
+        params: {
+          id: window.sessionStorage.getItem('id')
+        }
+      }
     );
-    const { avaliados } = (await json).data;
+
+    const avaliados = (await json).data;
     
-    setAvaliados(avaliados);
+    setAvaliados(avaliados.length);
   }
-  const checkNaoAvaliados = async () => {
-    const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/rotas/sem-avaliacao.php",
-      JSON.stringify({
-        PG: "semAvaliacao",
-        tipo:window.sessionStorage.getItem('tipo'),
-        id_avaliador: window.sessionStorage.getItem('id')  
-      })
 
+  const checkNaoAvaliados = async () => {
+    const json = axios.get(
+      "https://www4.fag.edu.br/api_summit/rotas/sem-avaliacao.php", {
+        params: {
+          id: window.sessionStorage.getItem('id')
+        }
+      }
     );
-    const { sem_avaliacao } = (await json).data;
+
+    const sem_avaliacao = (await json).data.quantidade;
+
     setSem_avaliacao(sem_avaliacao);
   }
-  const checkMedia = async () => {
-    const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/rotas/media.php",
-      JSON.stringify({
-        avaliador: window.sessionStorage.getItem('id'),
-        PG: "media",
-      })
 
+  const checkMedia = async () => {
+    const json = axios.get(
+      "https://www4.fag.edu.br/api_summit/rotas/media.php", {
+        params: {
+          id: window.sessionStorage.getItem('id')
+        }
+      } 
     );
     const { media } = (await json).data;
     setMedia(media);
   }
+
   useEffect(() => {
     checkTrabalhos();
     checkNaoAvaliados();
