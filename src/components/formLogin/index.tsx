@@ -13,7 +13,7 @@ const FormLogin = () => {
   }
 
   const Check = async (e: any) => {
-    const json = axios.post(
+    const json = await axios.post(
       'https://www4.fag.edu.br/api_summit/rotas/login.php',
       JSON.stringify({
         login: login,
@@ -21,12 +21,13 @@ const FormLogin = () => {
       })
     )
 
-    const { id, tipo, nome, acesso } = (await json).data
+    const { id, tipo, nome, acesso, token } = await json.data
 
     if (nome) {
       window.sessionStorage.setItem('nome', nome);
       window.sessionStorage.setItem('tipo', tipo);
       window.sessionStorage.setItem('acesso', acesso);
+      window.sessionStorage.setItem('token', token);
       window.sessionStorage.setItem('isVisible', 'inicial');
 
       if (acesso === 'popular') {

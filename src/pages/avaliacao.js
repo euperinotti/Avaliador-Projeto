@@ -6,7 +6,7 @@ import VotacaoAberta from "../components/VotacaoAberta";
 
 const Avaliacao = () => {
   useEffect(()=>{
-    if(window.sessionStorage.getItem('id') === null && window.sessionStorage.getItem('id') === null){
+    if(!window.sessionStorage.getItem('token')){
       window.location.href = '/'
     }
   });
