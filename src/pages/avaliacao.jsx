@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import CardAcompanhamento from "../components/CardAcompanhamento";
-// import Questionario from '../components/Questionario'
 import { BrowserView, isWindows, MobileView } from "react-device-detect";
 import VotacaoAberta from "../components/VotacaoAberta";
 import { Base } from "../components/Base";
