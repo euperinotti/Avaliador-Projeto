@@ -6,6 +6,7 @@ import VotacaoAberta from "./components/VotacaoAberta";
 import Avaliacao from "./pages/avaliacao";
 import Login from "./pages/login";
 import Questao from "./pages/questao";
+import './app.css';
 
 
 export default function App() {

@@ -3,22 +3,23 @@ import CardAcompanhamento from "../components/CardAcompanhamento";
 // import Questionario from '../components/Questionario'
 import { BrowserView, isWindows, MobileView } from "react-device-detect";
 import VotacaoAberta from "../components/VotacaoAberta";
+import { Base } from "../components/Base";
 
 const Avaliacao = () => {
-  useEffect(()=>{
-    if(!window.sessionStorage.getItem('token')){
+  useEffect(() => {
+    if (!window.sessionStorage.getItem('token')) {
       window.location.href = '/'
     }
   });
   return (
-    <div>
+    <Base>
       <BrowserView>
         <VotacaoAberta />
       </BrowserView>
       <MobileView>
         <CardAcompanhamento />
       </MobileView>
-    </div>
+    </Base>
   );
 };
 export default Avaliacao;

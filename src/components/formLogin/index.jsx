@@ -10,8 +10,9 @@ const FormLogin = () => {
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
 
-  const headlerSubmit = (e) => {
+  const handlerSubmit = (e) => {
     e.preventDefault();
+    Check();
   }
 
   const Check = async (e) => {
@@ -49,12 +50,13 @@ const FormLogin = () => {
   }
 
   return (
-      <S.Form onSubmit={headlerSubmit}>
-        <Logo />
-        <Input type="text" placeholder="Login" value={login} onChange={(e) => { setLogin(e.target.value) }} />
-        <Input type="password" placeholder="Senha" value={senha} onChange={(e) => { setSenha(e.target.value) }} />
-        <Button onClick={Check}>Entrar</Button>
-      </S.Form>
+    <S.Form onSubmit={handlerSubmit}>
+      <Logo />
+      <Input type="text" placeholder="Login" value={login} onChange={(e) => { setLogin(e.target.value) }} />
+      <Input type="password" placeholder="Senha" value={senha} onChange={(e) => { setSenha(e.target.value) }} />
+      <Button type="submit">Entrar</Button>
+    </S.Form>
   )
 };
+
 export default FormLogin;

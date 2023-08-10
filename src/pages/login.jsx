@@ -10,6 +10,7 @@ const Login = () => {
     window.sessionStorage.removeItem('nome');
     window.sessionStorage.removeItem('tipo');
   }, []);
+  
   return (
     <Base>
       <FormLogin />
