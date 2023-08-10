@@ -14,9 +14,13 @@ const VotacaoAberta = () => {
   const [voto2, setVoto2] = useState("");
   const handlerSubmit = (e) => {
     e.preventDefault();
-    votoHandler(e);
-    enviar();
-    alert("Você votou!");
+    const select1 = document.querySelector("select[name='categoria1']")
+    const select2 = document.querySelector("select[name='categoria2']")
+    console.log(select1.value)
+    console.log(select2.value)
+    // votoHandler(e);
+    // enviar();
+    // alert("Você votou!");
   };
 
   useEffect(async () => {
@@ -95,13 +99,13 @@ const VotacaoAberta = () => {
           <strong>Cada usuario tem direito a 1 voto.</strong>
         </S.Paragraph>
 
-        <Select onChange={(e) => { setProjetos(e.target.value) }} name="categoria1">
+        <Select name="categoria1">
           {projetos.map((e, index) => {
             return <Option value={e.id_projeto} key={index}>{e.titulo}</Option>
           })}
         </Select>
 
-        <Select onChange={(e) => { setProjetos2(e.target.value) }} name="categoria2">
+        <Select name="categoria2">
           {projetos2.map((e, index) => {
             return <Option value={e.id_projeto} key={index + '2'}>{e.titulo}</Option>
           })}
