@@ -14,13 +14,20 @@ const VotacaoAberta = () => {
   };
 
   useEffect(async () => {
-    await participante().catch(console.error);
-    await checkVoto().catch(console.error);
+    await participante();
+    await checkVoto();
   }, []);
 
+  const headers = {
+    'Authorization': `Bearer ${window.sessionStorage.getItem('token')}`,
+  }
+
   const participante = async () => {
-    const json = await axios.get(
-      "https://www4.fag.edu.br/api_summit/rotas/participantes.php"
+    const json = await axios.post(
+      "https://www4.fag.edu.br/api_summit/rotas/participantes.php",
+      JSON.stringify({
+        id: window.sessionStorage.getItem('id')
+      }), { headers }
     );
 
     const projetosCategoria1 = json.data.categoria1;
@@ -31,10 +38,11 @@ const VotacaoAberta = () => {
   };
 
   const checkVoto = async () => {
-    const json = await axios.get(
-      "https://www4.fag.edu.br/api_summit/rotas/check-voto-popular.php", {
-      params: window.sessionStorage.getItem('id')
-    }
+    const json = await axios.post(
+      "https://www4.fag.edu.br/api_summit/rotas/check-voto-popular.php",
+      JSON.stringify({
+        id: window.sessionStorage.getItem('id')
+      }), { headers }
     );
 
     const { codigo } = json.data;
@@ -48,11 +56,10 @@ const VotacaoAberta = () => {
   const enviar = async () => {
 
     const json = await axios.post(
-      "https://www4.fag.edu.br/api_summit/rotas/voto-popular.php",
-      JSON.stringify({
+      "https://www4.fag.edu.br/api_summit/rotas/voto-popular.php", JSON.stringify({
         id_projeto: voto,
-        id_pessoa: window.sessionStorage.getItem('id'),
-      })
+        id_pessoa: window.sessionStorage.getItem('id')
+      }), { headers }
     );
 
     const { status } = json.data;
@@ -90,12 +97,13 @@ const VotacaoAberta = () => {
           })}
         </select>
 
-        <select>
-          <option>A</option>
-          <option>A</option>
-          <option>A</option>
-          <option>A</option>
-          <option>A</option>
+        <select
+          onChange={e => setProjetos2(e.target.value)}
+          required
+        >
+          {projetos2.map((e, index) => {
+            return <option value={e.id_projeto} key={index + '2'}>{e.titulo}</option>
+          })}
         </select>
 
         <S.Botao>Enviar Voto</S.Botao>

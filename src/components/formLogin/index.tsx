@@ -21,9 +21,9 @@ const FormLogin = () => {
       })
     )
 
-    const { id, tipo, nome, acesso, token } = await json.data
+    const { id, tipo, nome, acesso, token } = json.data
 
-    if (nome) {
+    if (token) {
       window.sessionStorage.setItem('nome', nome);
       window.sessionStorage.setItem('tipo', tipo);
       window.sessionStorage.setItem('acesso', acesso);
@@ -33,7 +33,9 @@ const FormLogin = () => {
       if (acesso === 'popular') {
         window.sessionStorage.setItem('id', id);
         window.location.href = '/votopopular';
-      } else if (acesso === 'avaliador') {
+      } 
+      
+      if (acesso === 'avaliador') {
         window.sessionStorage.setItem('id', id);
         window.location.href = '/avaliacao';
       } else {

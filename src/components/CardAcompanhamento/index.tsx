@@ -7,44 +7,47 @@ const CardAcompanhamento = () => {
   const [media, setMedia] = useState(0);
   const [sem_avaliacao, setSem_avaliacao] = useState(0);
 
+  const headers = {
+    'Authorization': `Bearer ${window.sessionStorage.getItem('token')}`
+  }
 
   const checkTrabalhos = async () => {
-    const json = axios.get(
+    const json = await axios.get(
       "https://www4.fag.edu.br/api_summit/rotas/avaliados.php", {
-        params: {
-          id: window.sessionStorage.getItem('id')
-        }
-      }
+      params: {
+        id: window.sessionStorage.getItem('id')
+      }, headers
+    }
     );
 
-    const avaliados = (await json).data;
-    
+    const avaliados = json.data;
+
     setAvaliados(avaliados.length);
   }
 
   const checkNaoAvaliados = async () => {
-    const json = axios.get(
+    const json = await axios.get(
       "https://www4.fag.edu.br/api_summit/rotas/sem-avaliacao.php", {
-        params: {
-          id: window.sessionStorage.getItem('id')
-        }
-      }
+      params: {
+        id: window.sessionStorage.getItem('id')
+      }, headers
+    }
     );
 
-    const sem_avaliacao = (await json).data.quantidade;
+    const sem_avaliacao = json.data.quantidade;
 
     setSem_avaliacao(sem_avaliacao);
   }
 
   const checkMedia = async () => {
-    const json = axios.get(
+    const json = await axios.get(
       "https://www4.fag.edu.br/api_summit/rotas/media.php", {
-        params: {
-          id: window.sessionStorage.getItem('id')
-        }
-      } 
+      params: {
+        id: window.sessionStorage.getItem('id')
+      }, headers
+    }
     );
-    const { media } = (await json).data;
+    const { media } = json.data;
     setMedia(media);
   }
 
@@ -53,21 +56,21 @@ const CardAcompanhamento = () => {
     checkNaoAvaliados();
     checkMedia();
   });
+
   return (
     <S.Card>
-      <h4>Bem Vindo <br/>  {window.sessionStorage.getItem('nome')}</h4>
+      <h4>Bem Vindo <br /> {window.sessionStorage.getItem('nome')}</h4>
 
       <S.Number>
         <S.Text>Trabalhos avaliados:  <strong>{avaliados}</strong></S.Text>
         <S.Text>Média de notas:   <strong>{media}</strong></S.Text>
-        
       </S.Number>
-            <S.Number>
-        <S.Text onClick={()=>{window.location.href ='/semavaliacao'}}>Trabalhos sem avaliação:  <strong>{sem_avaliacao}</strong></S.Text>
-        <S.Text onClick={()=>{window.location.href="/leitor"}}>Iniciar Avaliação</S.Text>
-        
+
+      <S.Number>
+        <S.Text onClick={() => { window.location.href = '/semavaliacao' }}>Trabalhos sem avaliação:  <strong>{sem_avaliacao}</strong></S.Text>
+        <S.Text onClick={() => { window.location.href = "/leitor" }}>Iniciar Avaliação</S.Text>
       </S.Number>
-      
+
     </S.Card>
 
   );
