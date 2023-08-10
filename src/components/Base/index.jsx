@@ -4,7 +4,7 @@ export const Base = ({ children }) => {
   return (
     <S.Main>
       <S.Content>
-        <div>{children}</div>
+        {children}
       </S.Content>
     </S.Main>
   )
