@@ -9,4 +9,6 @@ export const Select = styled.select`
   outline: none;
   font-size: large;
   padding: 0 1rem;
+  width: 300px;
+  cursor: pointer;
 `
