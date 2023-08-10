@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { Logo } from './logo';
+import { Input } from './input';
+import { Button } from './botao';
 import * as S from './styled';
-import Logo from './logo_login.png';
 
 const axios = require('axios').default;
 
@@ -47,14 +49,12 @@ const FormLogin = () => {
   }
 
   return (
-    <S.Container>
       <S.Form onSubmit={headlerSubmit}>
-        <img src={Logo} />
-        <S.Input type="text" placeholder="Login" value={login} onChange={(e) => { setLogin(e.target.value) }} />
-        <S.Input type="password" placeholder="Senha" value={senha} onChange={(e) => { setSenha(e.target.value) }} />
-        <S.Botao onClick={Check}>Entrar</S.Botao>
+        <Logo />
+        <Input type="text" placeholder="Login" value={login} onChange={(e) => { setLogin(e.target.value) }} />
+        <Input type="password" placeholder="Senha" value={senha} onChange={(e) => { setSenha(e.target.value) }} />
+        <Button onClick={Check}>Entrar</Button>
       </S.Form>
-    </S.Container>
   )
 };
 export default FormLogin;
