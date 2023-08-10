@@ -7,4 +7,6 @@ export const Campo = styled.input`
   border:none;
   width:60%;
   margin:0 auto;
+  outline: none;
+  font-size: large;
 `

@@ -8,4 +8,7 @@ export const Button = styled.button`
   margin:0 auto;
   background-color:#228CC8;
   color:#fff;
+  outline: none;
+  cursor: pointer;
+  font-size: large;
 `
