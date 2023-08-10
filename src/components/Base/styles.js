@@ -11,11 +11,7 @@ export const Main = styled.div`
 `
 
 export const Content = styled.div`
-  max-width: 800px;
-  min-height: max-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  
+  margin: auto;
+  background-color: #364454;
+  border-radius: 50px;
 `

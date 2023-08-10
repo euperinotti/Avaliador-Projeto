@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import * as S from "./styled";
-import Logo from "./logo_login.png";
 import { Base } from "../Base";
 import { Button } from "../Botao";
 import { Select } from "../Select";
+import { Logo } from "../Logo";
+import { Option } from "../Option";
 
 const VotacaoAberta = () => {
   const [projetos, setProjetos] = useState([]);
@@ -83,32 +84,31 @@ const VotacaoAberta = () => {
 
   return (
     <Base>
-      <S.Container>
       <S.Form>
-        <img src={Logo} />
-        <h1>Votação Popular</h1>
-        <p>
+        <Logo />
+        <S.Heading>Votação Popular</S.Heading>
+        <S.Paragraph>
           Selecione o projeto que deseja enviar seu voto e depois clique em
           enviar voto.
           <br />
-          <strong>*</strong> Cada usuario tem direito a 1 voto.
-        </p>
+          <br />
+          <strong>Cada usuario tem direito a 1 voto.</strong>
+        </S.Paragraph>
 
-        <Select onChange={e => setProjetos(e.target.value)}>
+        <Select onChange={(e) => { setProjetos(e.target.value) }} name="categoria1">
           {projetos.map((e, index) => {
-            return <option value={e.id_projeto} key={index}>{e.titulo}</option>
+            return <Option value={e.id_projeto} key={index}>{e.titulo}</Option>
           })}
         </Select>
 
-        <Select onChange={e => setProjetos2(e.target.value)}>
+        <Select onChange={(e) => { setProjetos2(e.target.value) }} name="categoria2">
           {projetos2.map((e, index) => {
-            return <option value={e.id_projeto} key={index + '2'}>{e.titulo}</option>
+            return <Option value={e.id_projeto} key={index + '2'}>{e.titulo}</Option>
           })}
         </Select>
 
         <Button onClick={handlerSubmit}>Enviar Voto</Button>
       </S.Form>
-    </S.Container>
     </Base>
   );
 };

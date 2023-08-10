@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Logo } from '../Logo';
-import { Input } from './input';
+import { Input } from '../Input';
 import { Button } from '../Botao';
 import * as S from './styled';
 

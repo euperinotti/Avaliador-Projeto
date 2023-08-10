@@ -11,5 +11,4 @@ export const Form = styled.form`
   width: fit-content;
   height: auto;
   padding: 5rem;
-
 `
