@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
-import { BrowserView, isWindows, MobileView } from 'react-device-detect';
-// import { Link } from 'react-router-dom';
-import FormLogin from '../components/formLogin'
-import FormLogin2 from '../components/formLogin2'
+import { useEffect } from 'react';
+import FormLogin from '../components/formLogin';
+import { Base } from '../components/Base';
 
 const Login = () => {
   useEffect(() => {
@@ -14,14 +12,13 @@ const Login = () => {
     window.sessionStorage.removeItem('isVisible');
   }, []);
   return (
-    <div>
+    <Base>
       {/* <BrowserView>
-        <FormLogin2 />
       </BrowserView>
       <MobileView> */}
         <FormLogin />
       {/* </MobileView> */}
-    </div>
+    </Base>
   );
 }
 export default Login;

@@ -8,9 +8,18 @@ const Resultado = () => {
   const [tabs2, setTabs2] = useState([]);
   const [populars2, setPopulars2] = useState([]);
   const [extra1, setExtra1] = useState(0);
+
+  const headers = {
+    'Authorization': `Bearer ${window.sessionStorage.getItem('token')}`,
+  }
+
+  if (window.sessionStorage.getItem('acesso') != 'avaliador') {
+    window.location.href = '/'
+  }
+
   const check = async () => {
     const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/fag.php",
+      "https://www4.fag.edu.br/api_summit/rotas/resultado.php",
       JSON.stringify({
         PG: "resultado",
       })
