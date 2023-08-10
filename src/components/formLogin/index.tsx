@@ -30,12 +30,10 @@ const FormLogin = () => {
       window.sessionStorage.setItem('token', token);
       window.sessionStorage.setItem('isVisible', 'inicial');
 
-      if (acesso === 'popular') {
+      if (acesso == "popular") {
         window.sessionStorage.setItem('id', id);
         window.location.href = '/votopopular';
-      } 
-      
-      if (acesso === 'avaliador') {
+      } else if (acesso === 'avaliador') {
         window.sessionStorage.setItem('id', id);
         window.location.href = '/avaliacao';
       } else {

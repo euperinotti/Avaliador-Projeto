@@ -10,7 +10,9 @@ const VotacaoAberta = () => {
   const [voto2, setVoto2] = useState("");
   const handlerSubmit = (e) => {
     e.preventDefault();
-    enviar()
+    votoHandler(e);
+    enviar();
+    alert("Você votou!");
   };
 
   useEffect(async () => {
@@ -62,9 +64,9 @@ const VotacaoAberta = () => {
       }), { headers }
     );
 
-    const { status } = json.data;
-    if (status === 200) {
-      alert('Obrigado pelo seu voto');
+    const { codigo, status } = json.data;
+    if (codigo == 200) {
+      alert(status);
       window.location.href = '/';
     } else {
       alert('Ops tivemos um erro, favor atualizar a pagina e tentar de novo.')
@@ -106,7 +108,7 @@ const VotacaoAberta = () => {
           })}
         </select>
 
-        <S.Botao>Enviar Voto</S.Botao>
+        <S.Botao onClick={handlerSubmit}>Enviar Voto</S.Botao>
       </S.Form>
     </S.Container>
   );
