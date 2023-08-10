@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Logo } from './logo';
+import { Logo } from '../Logo';
 import { Input } from './input';
-import { Button } from './botao';
+import { Button } from '../Botao';
 import * as S from './styled';
 
 const axios = require('axios').default;

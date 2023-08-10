@@ -2,6 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import * as S from "./styled";
 import Logo from "./logo_login.png";
+import { Base } from "../Base";
+import { Button } from "../Botao";
+import { Select } from "../Select";
 
 const VotacaoAberta = () => {
   const [projetos, setProjetos] = useState([]);
@@ -79,7 +82,8 @@ const VotacaoAberta = () => {
   }
 
   return (
-    <S.Container>
+    <Base>
+      <S.Container>
       <S.Form>
         <img src={Logo} />
         <h1>Votação Popular</h1>
@@ -90,27 +94,22 @@ const VotacaoAberta = () => {
           <strong>*</strong> Cada usuario tem direito a 1 voto.
         </p>
 
-        <select
-          onChange={e => setProjetos(e.target.value)}
-          required
-        >
+        <Select onChange={e => setProjetos(e.target.value)}>
           {projetos.map((e, index) => {
             return <option value={e.id_projeto} key={index}>{e.titulo}</option>
           })}
-        </select>
+        </Select>
 
-        <select
-          onChange={e => setProjetos2(e.target.value)}
-          required
-        >
+        <Select onChange={e => setProjetos2(e.target.value)}>
           {projetos2.map((e, index) => {
             return <option value={e.id_projeto} key={index + '2'}>{e.titulo}</option>
           })}
-        </select>
+        </Select>
 
-        <S.Botao onClick={handlerSubmit}>Enviar Voto</S.Botao>
+        <Button onClick={handlerSubmit}>Enviar Voto</Button>
       </S.Form>
     </S.Container>
+    </Base>
   );
 };
 export default VotacaoAberta;
