@@ -1,5 +1,5 @@
 import axios from "axios";
-console.log(window.sessionStorage.getItem('token'))
+
 const URL = 'https://www4.fag.edu.br/api_summit/src/rotas/'
 const config = {
   headers: {

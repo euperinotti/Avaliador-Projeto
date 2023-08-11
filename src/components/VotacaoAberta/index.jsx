@@ -11,14 +11,13 @@ import { axiosCheckVoto, axiosParticipantes, axiosVotoPopular } from "../../axio
 const VotacaoAberta = () => {
   const [projetos, setProjetos] = useState([]);
   const [projetos2, setProjetos2] = useState([]);
-  const [voto, setVoto] = useState("");
-  const [voto2, setVoto2] = useState("");
+
   const handlerSubmit = (e) => {
     e.preventDefault();
-    const select1 = document.querySelector("select[name='categoria1']")
-    const select2 = document.querySelector("select[name='categoria2']")
-    console.log(select1.value)
-    console.log(select2.value)
+    const voto1 = document.querySelector("select[name='categoria1']")
+    const voto2 = document.querySelector("select[name='categoria2']")
+    console.log(voto1.value)
+    console.log(voto2.value)
     // votoHandler(e);
     // enviar();
     // alert("Você votou!");
@@ -47,12 +46,13 @@ const VotacaoAberta = () => {
 
     if (codigo === 200) {
       alert('Só pode ser realizado 1 voto por usuario.');
-      window.location.href = '/';
+      // window.location.href = '/';
     }
   };
 
   const enviar = async () => {
     const json = await axiosVotoPopular(voto, window.sessionStorage.getItem('id'))
+    const json2 = await axiosVotoPopular(voto2, window.sessionStorage.getItem('id'))
 
     const { codigo, status } = json.data;
     if (codigo == 200) {
@@ -62,10 +62,6 @@ const VotacaoAberta = () => {
       alert('Ops tivemos um erro, favor atualizar a pagina e tentar de novo.')
     }
   };
-
-  const votoHandler = (e) => {
-    setVoto(e.target.value)
-  }
 
   return (
     <Base>
