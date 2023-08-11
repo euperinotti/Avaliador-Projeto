@@ -1,5 +1,5 @@
 import axios from "axios";
-
+console.log(window.sessionStorage.getItem('token'))
 const URL = 'https://www4.fag.edu.br/api_summit/src/rotas/'
 const config = {
   headers: {
@@ -19,28 +19,28 @@ export const axiosLogin = async (login, senha) => {
 
 export const axiosVotoPopular = async (voto, idPessoa) => {
   return await axios.post(
-    `${URL}voto-popular.php`, 
+    `${URL}voto-popular.php`,
     JSON.stringify({
       id_projeto: voto,
       id_pessoa: idPessoa
-    }), 
+    }),
     config
   );
 }
 
 export const axiosParticipantes = async () => {
-  return await axios.post(
-    `${URL}participantes.php`, {}, 
+  return await axios.get(
+    `${URL}participantes.php`,
     config
   );
 }
 
 export const axiosCheckVoto = async (idPessoa) => {
   return await axios.post(
-    `${URL}check-voto-popular.php`, 
+    `${URL}check-voto-popular.php`,
     JSON.stringify({
       id: idPessoa,
-    }), 
+    }),
     config
   );
 }

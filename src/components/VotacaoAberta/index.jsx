@@ -97,4 +97,5 @@ const VotacaoAberta = () => {
     </Base>
   );
 };
+
 export default VotacaoAberta;
