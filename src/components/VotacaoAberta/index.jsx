@@ -1,11 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 import * as S from "./styled";
+import { useEffect, useState } from "react";
 import { Base } from "../Base";
 import { Button } from "../Botao";
 import { Select } from "../Select";
 import { Logo } from "../Logo";
 import { Option } from "../Option";
+import { axiosCheckVoto, axiosParticipantes, axiosVotoPopular } from "../../axios/axios-provider";
 
 const VotacaoAberta = () => {
   const [projetos, setProjetos] = useState([]);
@@ -28,17 +29,9 @@ const VotacaoAberta = () => {
     await checkVoto();
   }, []);
 
-  const headers = {
-    'Authorization': `Bearer ${window.sessionStorage.getItem('token')}`,
-  }
 
   const participante = async () => {
-    const json = await axios.post(
-      "https://www4.fag.edu.br/api_summit/rotas/participantes.php",
-      JSON.stringify({
-        id: window.sessionStorage.getItem('id')
-      }), { headers }
-    );
+    const json = await axiosParticipantes()
 
     const projetosCategoria1 = json.data.categoria1;
     const projetosCategoria2 = json.data.categoria2;
@@ -48,12 +41,7 @@ const VotacaoAberta = () => {
   };
 
   const checkVoto = async () => {
-    const json = await axios.post(
-      "https://www4.fag.edu.br/api_summit/rotas/check-voto-popular.php",
-      JSON.stringify({
-        id: window.sessionStorage.getItem('id')
-      }), { headers }
-    );
+    const json = await axiosCheckVoto(window.sessionStorage.getItem('id'))
 
     const { codigo } = json.data;
 
@@ -64,13 +52,7 @@ const VotacaoAberta = () => {
   };
 
   const enviar = async () => {
-
-    const json = await axios.post(
-      "https://www4.fag.edu.br/api_summit/rotas/voto-popular.php", JSON.stringify({
-        id_projeto: voto,
-        id_pessoa: window.sessionStorage.getItem('id')
-      }), { headers }
-    );
+    const json = await axiosVotoPopular(voto, window.sessionStorage.getItem('id'))
 
     const { codigo, status } = json.data;
     if (codigo == 200) {
@@ -79,7 +61,6 @@ const VotacaoAberta = () => {
     } else {
       alert('Ops tivemos um erro, favor atualizar a pagina e tentar de novo.')
     }
-
   };
 
   const votoHandler = (e) => {
@@ -96,7 +77,7 @@ const VotacaoAberta = () => {
           enviar voto.
           <br />
           <br />
-          <strong>Cada usuario tem direito a 1 voto.</strong>
+          <strong>Cada usuário tem direito a 1 voto.</strong>
         </S.Paragraph>
 
         <Select name="categoria1">

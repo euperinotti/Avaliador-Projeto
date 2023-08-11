@@ -27,3 +27,20 @@ export const axiosVotoPopular = async (voto, idPessoa) => {
     config
   );
 }
+
+export const axiosParticipantes = async () => {
+  return await axios.post(
+    `${URL}participantes.php`, {}, 
+    config
+  );
+}
+
+export const axiosCheckVoto = async (idPessoa) => {
+  return await axios.post(
+    `${URL}check-voto-popular.php`, 
+    JSON.stringify({
+      id: idPessoa,
+    }), 
+    config
+  );
+}

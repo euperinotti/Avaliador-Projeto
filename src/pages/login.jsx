@@ -3,8 +3,7 @@ import Form from '../components/Form';
 import { Base } from '../components/Base';
 import { Input } from '../components/Input';
 import { Button } from '../components/Botao';
-
-const axios = require('axios').default;
+import { axiosLogin } from '../axios/axios-provider';
 
 const Login = () => {
   useEffect(() => {
@@ -20,31 +19,25 @@ const Login = () => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    Check(e);
+    Check();
   }
 
-  const Check = async (e) => {
-    const json = await axios.post(
-      'https://www4.fag.edu.br/api_summit/rotas/login.php',
-      JSON.stringify({
-        login: login,
-        senha: senha
-      })
-    )
+  const Check = async () => {
 
-    const { id, tipo, nome, acesso, token } = json.data
+    const json = await axiosLogin(login, senha);
+
+    const { id, tipo, nome, acesso, token } = json.data;
 
     if (token) {
       window.sessionStorage.setItem('nome', nome);
       window.sessionStorage.setItem('tipo', tipo);
       window.sessionStorage.setItem('acesso', acesso);
       window.sessionStorage.setItem('token', token);
-      window.sessionStorage.setItem('isVisible', 'inicial');
 
       if (acesso == "popular") {
         window.sessionStorage.setItem('id', id);
         window.location.href = '/votopopular';
-      } else if (acesso === 'avaliador') {
+      } else if (acesso == 'avaliador') {
         window.sessionStorage.setItem('id', id);
         window.location.href = '/avaliacao';
       } else {
@@ -58,9 +51,22 @@ const Login = () => {
 
   return (
     <Base>
-      <Form onSubmit={handlerSubmit}>
-        <Input type="text" placeholder="Login" value={login} onChange={(e) => { setLogin(e.target.value) }} />
-        <Input type="password" placeholder="Senha" value={senha} onChange={(e) => { setSenha(e.target.value) }} />
+      <Form onSubmit={(e) => handlerSubmit(e)}>
+        <Input
+          type="text"
+          placeholder="Login"
+          value={login}
+          onChange={(e) => { setLogin(e.target.value) }}
+          required
+        />
+
+        <Input
+          type="password"
+          placeholder="Senha"
+          value={senha}
+          onChange={(e) => { setSenha(e.target.value) }}
+          required
+        />
         <Button type="submit">Entrar</Button>
       </Form>
     </Base>
