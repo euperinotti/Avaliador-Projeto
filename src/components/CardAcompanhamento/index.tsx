@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as S from './styled';
+import { Base } from '../Base';
+import { axiosCheckMedia, axiosCheckNaoAvaliados, axiosCheckTrabalhos } from '../../axios/axios-provider';
 const axios = require("axios").default;
 
 const CardAcompanhamento = () => {
@@ -7,32 +9,15 @@ const CardAcompanhamento = () => {
   const [media, setMedia] = useState(0);
   const [sem_avaliacao, setSem_avaliacao] = useState(0);
 
-  const headers = {
-    'Authorization': `Bearer ${window.sessionStorage.getItem('token')}`
-  }
-
   const checkTrabalhos = async () => {
-    const json = await axios.get(
-      "https://www4.fag.edu.br/api_summit/rotas/avaliados.php", {
-      params: {
-        id: window.sessionStorage.getItem('id')
-      }, headers
-    }
-    );
-
+    const json = await axiosCheckTrabalhos();
     const avaliados = json.data;
 
     setAvaliados(avaliados.length);
   }
 
   const checkNaoAvaliados = async () => {
-    const json = await axios.get(
-      "https://www4.fag.edu.br/api_summit/rotas/sem-avaliacao.php", {
-      params: {
-        id: window.sessionStorage.getItem('id')
-      }, headers
-    }
-    );
+    const json = await axiosCheckNaoAvaliados()
 
     const sem_avaliacao = json.data.quantidade;
 
@@ -40,13 +25,7 @@ const CardAcompanhamento = () => {
   }
 
   const checkMedia = async () => {
-    const json = await axios.get(
-      "https://www4.fag.edu.br/api_summit/rotas/media.php", {
-      params: {
-        id: window.sessionStorage.getItem('id')
-      }, headers
-    }
-    );
+    const json = await axiosCheckMedia();
     const { media } = json.data;
     setMedia(media);
   }
@@ -58,20 +37,19 @@ const CardAcompanhamento = () => {
   });
 
   return (
-    <S.Card>
-      <h4>Bem Vindo <br /> {window.sessionStorage.getItem('nome')}</h4>
+    <Base>
+      <S.Heading>Bem Vindo, <br />{window.sessionStorage.getItem('nome')?.toUpperCase()}</S.Heading>
 
       <S.Number>
-        <S.Text>Trabalhos avaliados:  <strong>{avaliados}</strong></S.Text>
-        <S.Text>Média de notas:   <strong>{media}</strong></S.Text>
+        <S.Text>Trabalhos avaliados: <strong>{avaliados}</strong></S.Text>
+        <S.Text>Média de notas: <strong>{media}</strong></S.Text>
       </S.Number>
 
       <S.Number>
         <S.Text onClick={() => { window.location.href = '/semavaliacao' }}>Trabalhos sem avaliação:  <strong>{sem_avaliacao}</strong></S.Text>
         <S.Text onClick={() => { window.location.href = "/leitor" }}>Iniciar Avaliação</S.Text>
       </S.Number>
-
-    </S.Card>
+    </Base>
 
   );
 };
