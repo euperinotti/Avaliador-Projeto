@@ -44,3 +44,36 @@ export const axiosCheckVoto = async (idPessoa) => {
     config
   );
 }
+
+export const axiosCheckMedia = async () => {
+  return await axios.get(
+    `${URL}media.php`, {
+    params: {
+      id: window.sessionStorage.getItem('id')
+    },
+    headers: config.headers
+  }
+  );
+}
+
+export const axiosCheckNaoAvaliados = async () => {
+  return await axios.get(
+    `${URL}sem-avaliacao.php`, {
+    params: {
+      id: window.sessionStorage.getItem('id')
+    },
+    headers: config.headers
+  }
+  );
+}
+
+export const axiosCheckTrabalhos = async () => {
+  return await axios.get(
+    `${URL}avaliados.php`, {
+    params: {
+      id: window.sessionStorage.getItem('id')
+    },
+    headers: config.headers
+  }
+  );
+}
