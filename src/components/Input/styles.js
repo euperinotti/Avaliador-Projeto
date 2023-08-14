@@ -5,8 +5,16 @@ export const Campo = styled.input`
   padding: 0rem 1rem;
   border-radius: 0.5rem;
   border: none;
-  width: 50%;
+  width: 100%;
+  max-width: 250px;
   margin: 0 auto;
   outline: none;
+  font-size: large;
+`
+
+export const Label = styled.label`
+  color: white;
+  width: 100%;
+  max-width: 250px;
   font-size: large;
 `

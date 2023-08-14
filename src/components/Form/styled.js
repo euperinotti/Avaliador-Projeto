@@ -9,5 +9,5 @@ export const Form = styled.form`
   border-radius: 50px;
   width: fit-content;
   height: auto;
-  margin: 50px;
+  padding: 2rem;
 `

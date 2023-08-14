@@ -54,7 +54,8 @@ const Login = () => {
       <Form onSubmit={(e) => handlerSubmit(e)}>
         <Input
           type="text"
-          placeholder="Login"
+          placeholder="Usuário do Sagres"
+          label="Login"
           value={login}
           onChange={(e) => { setLogin(e.target.value) }}
           required
@@ -62,7 +63,8 @@ const Login = () => {
 
         <Input
           type="password"
-          placeholder="Senha"
+          placeholder="Senha do Sagres"
+          label="Senha"
           value={senha}
           onChange={(e) => { setSenha(e.target.value) }}
           required
