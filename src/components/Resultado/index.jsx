@@ -18,18 +18,16 @@ const Resultado = () => {
   }
 
   const check = async () => {
-    const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/rotas/resultado.php",
-      JSON.stringify({
-        PG: "resultado",
-      })
+    const json = axios.get(
+      "https://www4.fag.edu.br/api_summit/src/rotas/resultado.php",
+      {
+        headers
+      }
     );
 
-    const { tabela, popular,tabela2, popular2 } = (await json).data;
-    setTab(tabela);
-    setPopular(popular);
-    setTabs2(tabela2);
-    setPopulars2(popular2);
+    const { resultaoCategoria1, resultadoCategoria2 } = (await json).data;
+    setTab(resultaoCategoria1);
+    setTabs2(resultadoCategoria2);
   };
   useEffect(() => {
     check();
