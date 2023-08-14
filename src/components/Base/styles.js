@@ -13,7 +13,7 @@ export const Main = styled.div`
 export const Content = styled.div`
   background-color: #364454;
   border-radius: 50px;
-  max-width: 800px;
+  max-width: 700px;
   height: fit-content;
   width: 95%;
   display: flex;
