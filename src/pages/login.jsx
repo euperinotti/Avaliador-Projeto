@@ -26,9 +26,9 @@ const Login = () => {
 
     const json = await axiosLogin(login, senha);
 
-    const { id, tipo, nome, acesso, token } = json.data;
+    if (json.data.token) {
+      const { id, tipo, nome, acesso, token } = json.data;
 
-    if (token) {
       window.sessionStorage.setItem('nome', nome);
       window.sessionStorage.setItem('tipo', tipo);
       window.sessionStorage.setItem('acesso', acesso);
@@ -43,7 +43,6 @@ const Login = () => {
       } else {
         window.location.href = '/resultado';
       }
-
     } else {
       alert("Login ou senha invalidos.");
     }

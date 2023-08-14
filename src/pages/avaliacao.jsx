@@ -10,15 +10,14 @@ const Avaliacao = () => {
       window.location.href = '/'
     }
   });
-  return (
-    <Base>
-      <BrowserView>
-        <VotacaoAberta />
-      </BrowserView>
-      <MobileView>
-        <CardAcompanhamento />
-      </MobileView>
-    </Base>
-  );
+
+  return <CardAcompanhamento />;
 };
 export default Avaliacao;
+
+
+     {/* <BrowserView>
+        <VotacaoAberta />
+      </BrowserView> */}
+      {/* <MobileView> */}
+      {/* </MobileView> */}
