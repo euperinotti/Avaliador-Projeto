@@ -3,13 +3,13 @@ import { BrowserView, MobileView } from "react-device-detect";
 import Questoes from '../components/Questoes'
 const Questao = () => {
 
-    useEffect(() => {
-      if(window.sessionStorage.getItem('id') === null){
-        window.location.href = '/';
-      }
-  },[]);
-   return (
-    
+  useEffect(() => {
+    if (window.sessionStorage.getItem('id') === null) {
+      window.location.href = '/';
+    }
+  }, []);
+  return (
+
     <div>
       <BrowserView>
         <h1 style={{ textAlign: "center" }}>
@@ -17,7 +17,7 @@ const Questao = () => {
         </h1>
       </BrowserView>
       <MobileView>
-        <Questoes />        
+        <Questoes />
       </MobileView>
     </div>
   );

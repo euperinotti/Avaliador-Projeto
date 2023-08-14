@@ -10,17 +10,14 @@ import { axiosCheckVoto, axiosParticipantes, axiosVotoPopular } from "../../axio
 
 const VotacaoAberta = () => {
   const [projetos, setProjetos] = useState([]);
-  const [projetos2, setProjetos2] = useState([]);
 
-  const handlerSubmit = (e) => {
+  const handlerSubmit = async (e) => {
     e.preventDefault();
     const voto1 = document.querySelector("select[name='categoria1']")
     const voto2 = document.querySelector("select[name='categoria2']")
-    console.log(voto1.value)
-    console.log(voto2.value)
-    // votoHandler(e);
-    // enviar();
-    // alert("Você votou!");
+    const voto3 = document.querySelector("select[name='categoria3']")
+    await enviar(voto1.value, voto2.value, voto3.value);
+    alert("Você votou!");
   };
 
   useEffect(async () => {
@@ -32,11 +29,9 @@ const VotacaoAberta = () => {
   const participante = async () => {
     const json = await axiosParticipantes()
 
-    const projetosCategoria1 = json.data.categoria1;
-    const projetosCategoria2 = json.data.categoria2;
+    const projetos = json.data.participantes;
 
-    setProjetos(projetosCategoria1);
-    setProjetos2(projetosCategoria2);
+    setProjetos(projetos);
   };
 
   const checkVoto = async () => {
@@ -50,13 +45,15 @@ const VotacaoAberta = () => {
     }
   };
 
-  const enviar = async () => {
-    const json = await axiosVotoPopular(voto, window.sessionStorage.getItem('id'))
+  const enviar = async (voto1, voto2, voto3) => {
+    const json = await axiosVotoPopular(voto1, window.sessionStorage.getItem('id'))
     const json2 = await axiosVotoPopular(voto2, window.sessionStorage.getItem('id'))
+    const json3 = await axiosVotoPopular(voto3, window.sessionStorage.getItem('id'))
 
     const { codigo, status } = json.data;
     if (codigo == 200) {
       alert(status);
+      window.sessionStorage.clear();
       window.location.href = '/';
     } else {
       alert('Ops tivemos um erro, favor atualizar a pagina e tentar de novo.')
@@ -78,23 +75,29 @@ const VotacaoAberta = () => {
 
         <Select className="produtos" name="categoria1">
           {projetos.map((e, index) => {
-            return <Option value={e.id_projeto} key={index}>{e.titulo}</Option>
+            if (e.categoria == 1) {
+              return (<Option value={e.id_projeto} key={index}>{e.titulo}</Option>)
+            }
           })}
         </Select>
 
         <Select className="soluções" name="categoria2">
-          {projetos2.map((e, index) => {
-            return <Option value={e.id_projeto} key={index + '2'}>{e.titulo}</Option>
+          {projetos.map((e, index) => {
+            if (e.categoria == 2) {
+              return (<Option value={e.id_projeto} key={index}>{e.titulo}</Option>)
+            }
           })}
         </Select>
 
-        <Select className="aplicativos" name="categoria2">
-          {projetos2.map((e, index) => {
-            return <Option value={e.id_projeto} key={index + '2'}>{e.titulo}</Option>
+        <Select className="aplicativos" name="categoria3">
+          {projetos.map((e, index) => {
+            if (e.categoria == 3) {
+              return (<Option value={e.id_projeto} key={index}>{e.titulo}</Option>)
+            }
           })}
         </Select>
 
-        <Button onClick={handlerSubmit}>Enviar Voto</Button>
+        <Button onClick={e => handlerSubmit(e)}>Enviar Voto</Button>
       </S.Form>
     </Base>
   );
