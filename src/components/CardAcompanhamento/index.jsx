@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { Base } from '../Base';
 import { axiosCheckMedia, axiosCheckNaoAvaliados, axiosCheckTrabalhos } from '../../axios/axios-provider';
-const axios = require("axios").default;
+import { Button } from '../Botao';
+import { GradeNotas } from '../GradeNotas';
 
 const CardAcompanhamento = () => {
   const [avaliados, setAvaliados] = useState(0);
@@ -38,19 +39,32 @@ const CardAcompanhamento = () => {
 
   return (
     <Base>
-      <S.Heading>Bem Vindo, <br />{window.sessionStorage.getItem('nome')?.toUpperCase()}</S.Heading>
+      <S.Heading>Bem Vindo, {window.sessionStorage.getItem('nome')?.toUpperCase()}</S.Heading>
 
-      <S.Number>
-        <S.Text>Trabalhos avaliados: <strong>{avaliados}</strong></S.Text>
-        <S.Text>Média de notas: <strong>{media}</strong></S.Text>
-      </S.Number>
+      <GradeNotas>
+        <S.Number>
+          <S.Text>Trabalhos avaliados:</S.Text>
+          <S.Nota>{avaliados}</S.Nota>
+        </S.Number>
 
-      <S.Number>
-        <S.Text onClick={() => { window.location.href = '/semavaliacao' }}>Trabalhos sem avaliação:  <strong>{sem_avaliacao}</strong></S.Text>
-        <S.Text onClick={() => { window.location.href = "/leitor" }}>Iniciar Avaliação</S.Text>
-      </S.Number>
+        <S.Number>
+          <S.Text>Média de notas:</S.Text>
+          <S.Nota>{media}</S.Nota>
+        </S.Number>
+
+        <S.Number>
+          <S.Text onClick={() => { window.location.href = '/semavaliacao' }}>Trabalhos sem avaliação:</S.Text>
+          <S.Nota>{sem_avaliacao}</S.Nota>
+        </S.Number>
+      </GradeNotas>
+      
+      <br/>
+
+      <Button onClick={() => { window.location.href = "/leitor" }}>
+        Iniciar Avaliação
+      </Button>
+
     </Base>
-
   );
 };
 export default CardAcompanhamento;
