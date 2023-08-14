@@ -2,17 +2,20 @@ import { useEffect, useState } from "react";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import * as S from './styles'
 
-import "./styles.css";
 import { Base } from "../Base";
 
 export default function Leitor() {
   const [scan, setScan] = useState(true);
-  const [logs, setLog] = useState < Array < string >> ([]);
+  const [logs, setLog] = useState("");
 
   const barcodeScannerComponentHandleUpdate = (error, result) => {
     if (result) {
-      setLog([...logs, result.text]);
+      setLog(result.text);
       setScan(false);
+
+      window.sessionStorage.setItem('trabalho', logs)
+
+          window.location.href = '/questao'
     }
   };
   useEffect(() => {
@@ -32,14 +35,6 @@ export default function Leitor() {
           />
         </div>
       )}
-      <div>
-        {logs.map((log) => {
-
-          window.sessionStorage.setItem('trabalho', log)
-
-          window.location.href = '/questao'
-        })}
-      </div>
     </Base>
   );
 }

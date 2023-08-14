@@ -13,7 +13,7 @@ const Questoes = () => {
 
   const Check = async () => {
     const json = axios.get(
-      "https://www4.fag.edu.br/api_summit/rotas/projeto.php", {
+      "https://www4.fag.edu.br/api_summit/src/rotas/projeto.php", {
         params: {
           id: window.sessionStorage.getItem('id'),
           qr: window.sessionStorage.getItem('trabalho')
@@ -38,7 +38,7 @@ const Questoes = () => {
   const Envio = async () => {
     
     const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/rotas/avaliado.php",
+      "https://www4.fag.edu.br/api_summit/src/rotas/avaliado.php",
       JSON.stringify({
         avaliador: window.sessionStorage.getItem('id'),
         quest1: quest1,
