@@ -76,13 +76,19 @@ const VotacaoAberta = () => {
           <strong>Cada usuário tem direito a 1 voto.</strong>
         </S.Paragraph>
 
-        <Select name="categoria1">
+        <Select className="produtos" name="categoria1">
           {projetos.map((e, index) => {
             return <Option value={e.id_projeto} key={index}>{e.titulo}</Option>
           })}
         </Select>
 
-        <Select name="categoria2">
+        <Select className="soluções" name="categoria2">
+          {projetos2.map((e, index) => {
+            return <Option value={e.id_projeto} key={index + '2'}>{e.titulo}</Option>
+          })}
+        </Select>
+
+        <Select className="aplicativos" name="categoria2">
           {projetos2.map((e, index) => {
             return <Option value={e.id_projeto} key={index + '2'}>{e.titulo}</Option>
           })}
