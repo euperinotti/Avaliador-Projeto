@@ -11,9 +11,15 @@ export const Main = styled.div`
 `
 
 export const Content = styled.div`
-  margin: auto;
   background-color: #364454;
   border-radius: 50px;
-  max-width: 1200px;
+  max-width: 800px;
+  height: fit-content;
   width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 30px;
 `

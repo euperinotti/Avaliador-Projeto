@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Number = styled.div`
   height: fit-content;
-  margin: 1rem;
+  width: 100%;
 `
 
 export const Heading = styled.h3`
@@ -17,7 +17,6 @@ export const Text = styled.p`
   text-align: center;
   width: 100%;
   color: white;
-  border-bottom: 1px solid white;
 `
 
 export const Nota = styled.h2`

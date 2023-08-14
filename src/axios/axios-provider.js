@@ -13,8 +13,7 @@ export const axiosLogin = async (login, senha) => {
     JSON.stringify({
       login: login,
       senha: senha
-    })
-  )
+    }))
 }
 
 export const axiosVotoPopular = async (voto, idPessoa) => {
