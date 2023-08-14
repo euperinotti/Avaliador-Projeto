@@ -41,7 +41,7 @@ const VotacaoAberta = () => {
 
     if (codigo === 200) {
       alert('Só pode ser realizado 1 voto por usuario.');
-      // window.location.href = '/';
+      window.location.href = '/';
     }
   };
 
