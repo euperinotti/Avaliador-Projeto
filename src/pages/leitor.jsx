@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
+import { Base } from "../components/Base";
 
 export default function Leitor() {
   const [scan, setScan] = useState(true);

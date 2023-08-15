@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Leitor from "./components/Leitor/teste";
 import Resultado from "./components/Resultado";
 import SemAvaliacao from "./components/SemAvaliacao";
 import VotacaoAberta from "./components/VotacaoAberta";
 import Avaliacao from "./pages/avaliacao";
+import Leitor from "./pages/leitor";
 import Login from "./pages/login";
 import Questao from "./pages/questao";
 import './app.css';

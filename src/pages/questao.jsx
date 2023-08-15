@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { BrowserView, MobileView } from "react-device-detect";
 import Questoes from '../components/Questoes'
+import { Base } from "../components/Base";
 const Questao = () => {
 
   useEffect(() => {
@@ -8,9 +9,9 @@ const Questao = () => {
       window.location.href = '/';
     }
   }, []);
+  
   return (
-
-    <div>
+    <Base>
       <BrowserView>
         <h1 style={{ textAlign: "center" }}>
           Esse sistema foi desenvolvido para uso exclusivo pelo Smartphone
@@ -19,7 +20,7 @@ const Questao = () => {
       <MobileView>
         <Questoes />
       </MobileView>
-    </div>
+    </Base>
   );
 }
 export default Questao;
