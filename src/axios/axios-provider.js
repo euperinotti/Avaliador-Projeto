@@ -76,3 +76,18 @@ export const axiosCheckTrabalhos = async () => {
   }
   );
 }
+
+export const axiosAvaliado = async (idProjeto, quest1, quest2, quest3, quest4) => {
+  return await axios.post(
+    "https://www4.fag.edu.br/api_summit/src/rotas/avaliado.php",
+    JSON.stringify({
+      avaliador: window.sessionStorage.getItem('id'),
+      quest1,
+      quest2,
+      quest3,
+      quest4,
+      id_projeto: idProjeto,
+    }, config
+    )
+  );
+}

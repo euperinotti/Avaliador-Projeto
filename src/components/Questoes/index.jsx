@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as S from "./styled";
+import { axiosAvaliado } from "../../axios/axios-provider";
 const axios = require("axios").default;
 
 const Questoes = () => {
@@ -37,17 +38,7 @@ const Questoes = () => {
 
   const Envio = async () => {
     
-    const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/src/rotas/avaliado.php",
-      JSON.stringify({
-        avaliador: window.sessionStorage.getItem('id'),
-        quest1: quest1,
-        quest2: quest2,
-        quest3: quest3,
-        quest4: quest4,
-        id_projeto: idProjeto,
-      })
-    );
+    const json = await axiosAvaliado(idProjeto, quest1, quest2, quest3, quest4)
 
     const { id_avaliacao } = (await json).data;
     
