@@ -8,19 +8,26 @@ const Resultado = () => {
   const [tabs2, setTabs2] = useState([]);
   const [populars2, setPopulars2] = useState([]);
   const [extra1, setExtra1] = useState(0);
+
+  const headers = {
+    'Authorization': `Bearer ${window.sessionStorage.getItem('token')}`,
+  }
+
+  if (window.sessionStorage.getItem('acesso') != 'avaliador') {
+    window.location.href = '/'
+  }
+
   const check = async () => {
-    const json = axios.post(
-      "https://www4.fag.edu.br/api_summit/fag.php",
-      JSON.stringify({
-        PG: "resultado",
-      })
+    const json = axios.get(
+      "https://www4.fag.edu.br/api_summit/src/rotas/resultado.php",
+      {
+        headers
+      }
     );
 
-    const { tabela, popular,tabela2, popular2 } = (await json).data;
-    setTab(tabela);
-    setPopular(popular);
-    setTabs2(tabela2);
-    setPopulars2(popular2);
+    const { resultaoCategoria1, resultadoCategoria2 } = (await json).data;
+    setTab(resultaoCategoria1);
+    setTabs2(resultadoCategoria2);
   };
   useEffect(() => {
     check();

@@ -1,12 +1,11 @@
-import axios from "axios";
-import * as S from "./styled";
 import { useEffect, useState } from "react";
-import { Base } from "../Base";
-import { Button } from "../Botao";
-import { Select } from "../Select";
-import { Logo } from "../Logo";
-import { Option } from "../Option";
 import { axiosCheckVoto, axiosParticipantes, axiosVotoPopular } from "../../axios/axios-provider";
+import { Base } from "../components/Base";
+import { Button } from "../components/Botao";
+import { Logo } from "../components/Logo";
+import { Option } from "../components/Option";
+import { Select } from "../components/Select";
+import { Form } from "../components/Form";
 
 const VotacaoAberta = () => {
   const [projetos, setProjetos] = useState([]);
@@ -62,7 +61,7 @@ const VotacaoAberta = () => {
 
   return (
     <Base>
-      <S.Form>
+      <Form>
         <Logo />
         <S.Heading>Votação Popular</S.Heading>
         <S.Paragraph>
@@ -98,7 +97,7 @@ const VotacaoAberta = () => {
         </Select>
 
         <Button onClick={e => handlerSubmit(e)}>Enviar Voto</Button>
-      </S.Form>
+      </Form>
     </Base>
   );
 };
