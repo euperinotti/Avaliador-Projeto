@@ -8,10 +8,10 @@ import { axiosLogin } from '../axios/axios-provider';
 const Login = () => {
   useEffect(() => {
     window.sessionStorage.removeItem('nome');
-    window.sessionStorage.removeItem('id_pessoa');
-    window.sessionStorage.removeItem('id_avaliador');
-    window.sessionStorage.removeItem('nome');
     window.sessionStorage.removeItem('tipo');
+    window.sessionStorage.removeItem('acesso');
+    window.sessionStorage.removeItem('token');
+    window.sessionStorage.removeItem('id');
   }, []);
 
   const [login, setLogin] = useState('');
@@ -24,28 +24,30 @@ const Login = () => {
 
   const Check = async () => {
 
-    const json = await axiosLogin(login, senha);
-
-    if (json.data.token) {
-      const { id, tipo, nome, acesso, token } = json.data;
-
-      window.sessionStorage.setItem('nome', nome);
-      window.sessionStorage.setItem('tipo', tipo);
-      window.sessionStorage.setItem('acesso', acesso);
-      window.sessionStorage.setItem('token', token);
-
-      if (acesso == "popular") {
-        window.sessionStorage.setItem('id', id);
-        window.location.href = '/votopopular';
-      } else if (acesso == 'avaliador') {
-        window.sessionStorage.setItem('id', id);
-        window.location.href = '/avaliacao';
+    const json = await axiosLogin(login, senha)
+    .then(() => {
+      if (json.data.token) {
+        const { id, tipo, nome, acesso, token } = json.data;
+  
+        window.sessionStorage.setItem('nome', nome);
+        window.sessionStorage.setItem('tipo', tipo);
+        window.sessionStorage.setItem('acesso', acesso);
+        window.sessionStorage.setItem('token', token);
+  
+        if (acesso == "popular") {
+          window.sessionStorage.setItem('id', id);
+          window.location.href = '/votopopular';
+        } else if (acesso == 'avaliador') {
+          window.sessionStorage.setItem('id', id);
+          window.location.href = '/avaliacao';
+        } else {
+          window.location.href = '/resultado';
+        }
       } else {
-        window.location.href = '/resultado';
+        alert("Login ou senha invalidos.");
       }
-    } else {
-      alert("Login ou senha invalidos.");
-    }
+    })
+    .catch((e) => alert("Usuário ou senha inválidos"));
   }
 
   return (
