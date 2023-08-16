@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { axiosCheckVoto, axiosParticipantes, axiosVotoPopular } from "../../axios/axios-provider";
+import { axiosCheckVoto, axiosParticipantes, axiosVotoPopular } from "../axios/axios-provider";
 import { Base } from "../components/Base";
 import { Button } from "../components/Botao";
-import { Logo } from "../components/Logo";
 import { Option } from "../components/Option";
 import { Select } from "../components/Select";
-import { Form } from "../components/Form";
+import Form from "../components/Form";
+import * as S from './styles/votacao-aberta'
 
 const VotacaoAberta = () => {
   const [projetos, setProjetos] = useState([]);
@@ -40,7 +40,7 @@ const VotacaoAberta = () => {
 
     if (codigo === 200) {
       alert('Só pode ser realizado 1 voto por usuario.');
-      window.location.href = '/';
+      // window.location.href = '/';
     }
   };
 
@@ -62,7 +62,6 @@ const VotacaoAberta = () => {
   return (
     <Base>
       <Form>
-        <Logo />
         <S.Heading>Votação Popular</S.Heading>
         <S.Paragraph>
           Selecione o projeto que deseja enviar seu voto e depois clique em
