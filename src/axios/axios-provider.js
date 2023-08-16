@@ -17,10 +17,10 @@ export const axiosLogin = async (login, senha) => {
         senha: senha
       }))
 
-      return res.data
+    return res.data
   } catch (err) {
     console.log(err)
-  } 
+  }
 }
 
 export const axiosVotoPopular = async (voto, idPessoa) => {
@@ -98,3 +98,16 @@ export const axiosAvaliado = async (idProjeto, quest1, quest2, quest3, quest4) =
     )
   );
 }
+
+export const axiosResultado = async () => {
+  try {
+    const res = await axios.get(
+      `${URL}resultado.php`,
+      config
+    );
+
+    return res.data
+  } catch (err) {
+    console.log(err)
+  }
+};
