@@ -8,6 +8,7 @@ export const Main = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  padding: 30px 0;
 `
 
 export const Content = styled.div`

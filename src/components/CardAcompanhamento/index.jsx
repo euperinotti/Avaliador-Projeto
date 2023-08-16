@@ -4,6 +4,7 @@ import { Base } from '../Base';
 import { axiosCheckMedia, axiosCheckNaoAvaliados, axiosCheckTrabalhos } from '../../axios/axios-provider';
 import { Button } from '../Botao';
 import { GradeNotas } from '../GradeNotas';
+import { ButtonResult } from '../BotaoSecundario';
 
 const CardAcompanhamento = () => {
   const [avaliados, setAvaliados] = useState(0);
@@ -32,6 +33,9 @@ const CardAcompanhamento = () => {
   }
 
   useEffect(() => {
+    if (!window.sessionStorage.getItem('token')) {
+      window.location.href = '/'
+    }
     checkTrabalhos();
     checkNaoAvaliados();
     checkMedia();
@@ -63,6 +67,12 @@ const CardAcompanhamento = () => {
       <Button onClick={() => { window.location.href = "/leitor" }}>
         Iniciar Avaliação
       </Button>
+
+      <br/>
+
+      <ButtonResult onClick={() => { window.location.href = "/resultado" }}>
+        Resultado
+      </ButtonResult>
 
     </Base>
   );
