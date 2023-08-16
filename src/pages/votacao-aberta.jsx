@@ -8,6 +8,11 @@ import Form from "../components/Form";
 import * as S from './styles/votacao-aberta'
 
 const VotacaoAberta = () => {
+
+  if(!window.sessionStorage.getItem('token')) {
+    window.location.href = '/'
+  }
+
   const [projetos, setProjetos] = useState([]);
 
   const handlerSubmit = async (e) => {
@@ -16,7 +21,6 @@ const VotacaoAberta = () => {
     const voto2 = document.querySelector("select[name='categoria2']")
     const voto3 = document.querySelector("select[name='categoria3']")
     await enviar(voto1.value, voto2.value, voto3.value);
-    alert("Você votou!");
   };
 
   useEffect(async () => {
@@ -40,7 +44,7 @@ const VotacaoAberta = () => {
 
     if (codigo === 200) {
       alert('Só pode ser realizado 1 voto por usuario.');
-      // window.location.href = '/';
+      window.location.href = '/';
     }
   };
 

@@ -7,11 +7,7 @@ import { axiosLogin } from '../axios/axios-provider';
 
 const Login = () => {
   useEffect(() => {
-    window.sessionStorage.removeItem('nome');
-    window.sessionStorage.removeItem('tipo');
-    window.sessionStorage.removeItem('acesso');
-    window.sessionStorage.removeItem('token');
-    window.sessionStorage.removeItem('id');
+    window.sessionStorage.clear();
   }, []);
 
   const [login, setLogin] = useState('');
