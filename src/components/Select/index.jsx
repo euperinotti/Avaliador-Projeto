@@ -2,7 +2,7 @@ import * as S from './styles'
 
 export const Select = (props) => {
   return (
-    <S.Label>{props.className.toUpperCase()}
+    <S.Label><strong>{props.className.toUpperCase()}</strong>
     <br/>
       <S.Select name={props.name} required>
       {props.children}

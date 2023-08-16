@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Resultado from "./components/Resultado";
 import SemAvaliacao from "./components/SemAvaliacao";
-import VotacaoAberta from "./components/VotacaoAberta";
+import VotacaoAberta from "./pages/votacao-aberta";
 import Avaliacao from "./pages/avaliacao";
 import Leitor from "./pages/leitor";
 import Login from "./pages/login";
