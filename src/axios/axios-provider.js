@@ -8,12 +8,19 @@ const config = {
 }
 
 export const axiosLogin = async (login, senha) => {
-  return await axios.post(
-    `${URL}login.php`,
-    JSON.stringify({
-      login: login,
-      senha: senha
-    }))
+
+  try {
+    const res = await axios.post(
+      `${URL}login.php`,
+      JSON.stringify({
+        login: login,
+        senha: senha
+      }))
+
+      return res.data
+  } catch (err) {
+    console.log(err)
+  } 
 }
 
 export const axiosVotoPopular = async (voto, idPessoa) => {

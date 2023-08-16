@@ -25,29 +25,27 @@ const Login = () => {
   const Check = async () => {
 
     const json = await axiosLogin(login, senha)
-    .then(() => {
-      if (json.data.token) {
-        const { id, tipo, nome, acesso, token } = json.data;
-  
-        window.sessionStorage.setItem('nome', nome);
-        window.sessionStorage.setItem('tipo', tipo);
-        window.sessionStorage.setItem('acesso', acesso);
-        window.sessionStorage.setItem('token', token);
-  
-        if (acesso == "popular") {
-          window.sessionStorage.setItem('id', id);
-          window.location.href = '/votopopular';
-        } else if (acesso == 'avaliador') {
-          window.sessionStorage.setItem('id', id);
-          window.location.href = '/avaliacao';
-        } else {
-          window.location.href = '/resultado';
-        }
+
+    if (json) {
+      const { id, tipo, nome, acesso, token } = json;
+
+      window.sessionStorage.setItem('nome', nome);
+      window.sessionStorage.setItem('tipo', tipo);
+      window.sessionStorage.setItem('acesso', acesso);
+      window.sessionStorage.setItem('token', token);
+
+      if (acesso == "popular") {
+        window.sessionStorage.setItem('id', id);
+        window.location.href = '/votopopular';
+      } else if (acesso == 'avaliador') {
+        window.sessionStorage.setItem('id', id);
+        window.location.href = '/avaliacao';
       } else {
-        alert("Login ou senha invalidos.");
+        window.location.href = '/resultado';
       }
-    })
-    .catch((e) => alert("Usuário ou senha inválidos"));
+    } else {
+      alert("Login ou senha invalidos.");
+    }
   }
 
   return (
