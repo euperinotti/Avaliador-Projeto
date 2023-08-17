@@ -4,8 +4,9 @@ import { Base } from "../components/Base";
 import { Button } from "../components/Botao";
 import { Option } from "../components/Option";
 import { Select } from "../components/Select";
+import { Heading } from "../components/Heading";
+import { Paragraph } from "../components/Paragraph";
 import Form from "../components/Form";
-import * as S from './styles/votacao-aberta'
 
 const VotacaoAberta = () => {
 
@@ -66,14 +67,14 @@ const VotacaoAberta = () => {
   return (
     <Base>
       <Form>
-        <S.Heading>Votação Popular</S.Heading>
-        <S.Paragraph>
+        <Heading>Votação Popular</Heading>
+        <Paragraph>
           Selecione o projeto que deseja enviar seu voto e depois clique em
           enviar voto.
           <br />
           <br />
           <strong>Cada usuário tem direito a 1 voto.</strong>
-        </S.Paragraph>
+        </Paragraph>
 
         <Select className="produtos" name="categoria1">
           {projetos.map((e, index) => {
