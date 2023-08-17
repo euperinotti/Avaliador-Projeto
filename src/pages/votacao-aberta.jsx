@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import { axiosCheckVoto, axiosParticipantes, axiosVotoPopular } from "../axios/axios-provider";
 import { Base } from "../components/Base";
 import { Button } from "../components/Botao";
-import { Option } from "../components/Option";
-import { Select } from "../components/Select";
+import Form from "../components/Form";
 import { Heading } from "../components/Heading";
 import { Paragraph } from "../components/Paragraph";
-import Form from "../components/Form";
+import { Select } from "../components/Select";
 
 const VotacaoAberta = () => {
 
-  if(!window.sessionStorage.getItem('token')) {
+  if (!window.sessionStorage.getItem('token')) {
     window.location.href = '/'
   }
 
@@ -66,7 +65,7 @@ const VotacaoAberta = () => {
 
   return (
     <Base>
-      <Form>
+      <Form onSubmit={e => handlerSubmit(e)}>
         <Heading>Votação Popular</Heading>
         <Paragraph>
           Selecione o projeto que deseja enviar seu voto e depois clique em
@@ -76,31 +75,13 @@ const VotacaoAberta = () => {
           <strong>Cada usuário tem direito a 1 voto.</strong>
         </Paragraph>
 
-        <Select className="produtos" name="categoria1">
-          {projetos.map((e, index) => {
-            if (e.categoria == 1) {
-              return (<Option value={e.id_projeto} key={index}>{e.titulo}</Option>)
-            }
-          })}
-        </Select>
+        <Select label="produtos" name="categoria1" data={projetos} categoria="1" />
 
-        <Select className="soluções" name="categoria2">
-          {projetos.map((e, index) => {
-            if (e.categoria == 2) {
-              return (<Option value={e.id_projeto} key={index}>{e.titulo}</Option>)
-            }
-          })}
-        </Select>
+        <Select label="soluções" name="categoria2" data={projetos} categoria="2" />
 
-        <Select className="aplicativos" name="categoria3">
-          {projetos.map((e, index) => {
-            if (e.categoria == 3) {
-              return (<Option value={e.id_projeto} key={index}>{e.titulo}</Option>)
-            }
-          })}
-        </Select>
+        <Select label="aplicativos" name="categoria3" data={projetos} categoria="3" />
 
-        <Button onClick={e => handlerSubmit(e)}>Enviar Voto</Button>
+        <Button>Enviar Voto</Button>
       </Form>
     </Base>
   );

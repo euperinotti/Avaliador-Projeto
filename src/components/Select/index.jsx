@@ -1,12 +1,17 @@
 import * as S from './styles'
+import { Option } from '../Option'
 
-export const Select = (props) => {
+export const Select = ({ label, name, data, categoria }) => {
   return (
-    <S.Label><strong>{props.className.toUpperCase()}</strong>
-    <br/>
-      <S.Select name={props.name} required>
-      {props.children}
-    </S.Select>
+    <S.Label><strong>{label.toUpperCase()}</strong>
+      <br />
+      <S.Select name={name} required>
+        {data.map((e, index) => {
+          if (e.categoria == categoria) {
+            return (<Option value={e.id_projeto} key={index}>{e.titulo}</Option>)
+          }
+        })}
+      </S.Select>
     </S.Label>
   )
 }
