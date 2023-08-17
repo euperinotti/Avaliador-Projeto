@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Resultado from "./components/Resultado";
+import Resultado from "./pages/resultado";
 import SemAvaliacao from "./components/SemAvaliacao";
 import VotacaoAberta from "./pages/votacao-aberta";
 import Leitor from "./pages/leitor";
