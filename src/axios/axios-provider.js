@@ -85,18 +85,23 @@ export const axiosCheckTrabalhos = async () => {
 }
 
 export const axiosAvaliado = async (idProjeto, quest1, quest2, quest3, quest4) => {
-  return await axios.post(
-    "https://www4.fag.edu.br/api_summit/src/rotas/avaliado.php",
-    JSON.stringify({
-      avaliador: window.sessionStorage.getItem('id'),
-      quest1,
-      quest2,
-      quest3,
-      quest4,
-      id_projeto: idProjeto,
-    }, config
-    )
-  );
+  try {
+    const res = await axios.post(
+      `${URL}avaliado.php`,
+      JSON.stringify({
+        avaliador: window.sessionStorage.getItem('id'),
+        quest1,
+        quest2,
+        quest3,
+        quest4,
+        id_projeto: idProjeto,
+      }), config
+    );
+
+    return res.data
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export const axiosResultado = async () => {
@@ -111,3 +116,21 @@ export const axiosResultado = async () => {
     console.log(err)
   }
 };
+
+export const axiosProjeto = async () => {
+  try {
+    const res = await axios.get(
+      `${URL}projeto.php`,
+      {
+        params: {
+          id: window.sessionStorage.getItem('id'),
+          qr: window.sessionStorage.getItem('trabalho')
+        }, headers: config.headers
+      }
+    );
+
+    return res.data
+  } catch (err) {
+    console.log(err)
+  }
+}
