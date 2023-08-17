@@ -5,7 +5,7 @@ import VotacaoAberta from "./pages/votacao-aberta";
 import Leitor from "./pages/leitor";
 import Login from "./pages/login";
 import Questao from "./pages/questao";
-import CardAcompanhamento from "./components/CardAcompanhamento";
+import Avaliador from "./pages/avaliador";
 import './app.css';
 
 
@@ -15,7 +15,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/avaliacao" element={<CardAcompanhamento />} />
+        <Route path="/avaliador" element={<Avaliador />} />
         <Route path="/leitor" element={<Leitor />} />
         <Route path="/questao" element={<Questao />} />
         <Route path="/resultado" element={<Resultado />} />
