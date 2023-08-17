@@ -4,6 +4,7 @@ import { Base } from '../components/Base';
 import { Input } from '../components/Input';
 import { Button } from '../components/Botao';
 import { axiosLogin } from '../axios/axios-provider';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   useEffect(() => {
@@ -12,13 +13,14 @@ const Login = () => {
 
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
+  const navigate = useNavigate()
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    Check();
+    loginUsuario();
   }
 
-  const Check = async () => {
+  const loginUsuario = async () => {
 
     const json = await axiosLogin(login, senha)
 
@@ -32,12 +34,12 @@ const Login = () => {
 
       if (acesso == "popular") {
         window.sessionStorage.setItem('id', id);
-        window.location.href = '/votopopular';
+        navigate('/votopopular')
       } else if (acesso == 'avaliador') {
         window.sessionStorage.setItem('id', id);
-        window.location.href = '/avaliacao';
+        navigate('/avaliacao')
       } else {
-        window.location.href = '/resultado';
+        navigate('/resultado')
       }
     } else {
       alert("Login ou senha invalidos.");

@@ -5,11 +5,15 @@ import { axiosCheckMedia, axiosCheckNaoAvaliados, axiosCheckTrabalhos } from '..
 import { Button } from '../Botao';
 import { GradeNotas } from '../GradeNotas';
 import { ButtonResult } from '../BotaoSecundario';
+import { Link, useNavigate } from 'react-router-dom';
+import { Heading } from '../Heading';
 
 const CardAcompanhamento = () => {
   const [avaliados, setAvaliados] = useState(0);
   const [media, setMedia] = useState(0);
   const [sem_avaliacao, setSem_avaliacao] = useState(0);
+
+  const navigate = useNavigate();
 
   const checkTrabalhos = async () => {
     const json = await axiosCheckTrabalhos();
@@ -43,7 +47,7 @@ const CardAcompanhamento = () => {
 
   return (
     <Base>
-      <S.Heading>Bem Vindo, {window.sessionStorage.getItem('nome')?.toUpperCase()}</S.Heading>
+      <Heading>Bem Vindo, {window.sessionStorage.getItem('nome')?.toUpperCase()}</Heading>
 
       <GradeNotas>
         <S.Number>
@@ -61,16 +65,18 @@ const CardAcompanhamento = () => {
           <S.Nota>{sem_avaliacao}</S.Nota>
         </S.Number>
       </GradeNotas>
-      
-      <br/>
 
-      <Button onClick={() => { window.location.href = "/leitor" }}>
-        Iniciar Avaliação
-      </Button>
+      <br />
 
-      <br/>
+      <Link to="/leitor">
+        <Button>
+          Iniciar Avaliação
+        </Button>
+      </Link>
 
-      <ButtonResult onClick={() => { window.location.href = "/resultado" }}>
+      <br />
+
+      <ButtonResult onClick={() => { navigate("/resultado") }}>
         Resultado
       </ButtonResult>
 
