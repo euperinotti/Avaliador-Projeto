@@ -2,11 +2,13 @@ import { useEffect } from "react"
 import { BrowserView, MobileView } from "react-device-detect";
 import Questoes from '../components/Questoes'
 import { Base } from "../components/Base";
+import { useNavigate } from "react-router-dom";
 const Questao = () => {
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (window.sessionStorage.getItem('id') === null) {
-      window.location.href = '/';
+    if (window.sessionStorage.getItem('id') === null && window.sessionStorage.getItem('acesso') != 'avaliador') {
+      navigate('/');
     }
   }, []);
   

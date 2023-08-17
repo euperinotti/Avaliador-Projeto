@@ -37,7 +37,7 @@ const Login = () => {
         navigate('/votopopular')
       } else if (acesso == 'avaliador') {
         window.sessionStorage.setItem('id', id);
-        navigate('/avaliacao')
+        navigate('/avaliador')
       } else {
         navigate('/resultado')
       }
