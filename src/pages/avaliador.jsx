@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import * as S from './styled';
-import { Base } from '../Base';
-import { axiosCheckMedia, axiosCheckNaoAvaliados, axiosCheckTrabalhos } from '../../axios/axios-provider';
-import { Button } from '../Botao';
-import { GradeNotas } from '../GradeNotas';
-import { ButtonResult } from '../BotaoSecundario';
 import { Link, useNavigate } from 'react-router-dom';
-import { Heading } from '../Heading';
+import { axiosCheckMedia, axiosCheckNaoAvaliados, axiosCheckTrabalhos } from '../axios/axios-provider';
+import { Base } from '../components/Base';
+import { Button } from '../components/Botao';
+import { ButtonResult } from '../components/BotaoSecundario';
+import { CardNota } from '../components/CardNota';
+import { GradeNotas } from '../components/GradeNotas';
+import { Heading } from '../components/Heading';
 
-const CardAcompanhamento = () => {
+const Avaliador = () => {
   const [avaliados, setAvaliados] = useState(0);
   const [media, setMedia] = useState(0);
   const [sem_avaliacao, setSem_avaliacao] = useState(0);
@@ -37,7 +37,7 @@ const CardAcompanhamento = () => {
   }
 
   useEffect(() => {
-    if (!window.sessionStorage.getItem('token')) {
+    if (!window.sessionStorage.getItem('token') && window.sessionStorage.getItem('acesso') != 'avaliador') {
       window.location.href = '/'
     }
     checkTrabalhos();
@@ -50,20 +50,11 @@ const CardAcompanhamento = () => {
       <Heading>Bem Vindo, {window.sessionStorage.getItem('nome')?.toUpperCase()}</Heading>
 
       <GradeNotas>
-        <S.Number>
-          <S.Text>Trabalhos avaliados:</S.Text>
-          <S.Nota>{avaliados}</S.Nota>
-        </S.Number>
 
-        <S.Number>
-          <S.Text>Média de notas:</S.Text>
-          <S.Nota>{media}</S.Nota>
-        </S.Number>
+        <CardNota titulo="Trabalhos avaliados" nota={avaliados} />
+        <CardNota titulo="Média de notas" nota={media} />
+        <CardNota onClick={() => { window.location.href = '/semavaliacao' }} titulo="Trabalhos sem avaliação" nota={sem_avaliacao} />
 
-        <S.Number>
-          <S.Text onClick={() => { window.location.href = '/semavaliacao' }}>Trabalhos sem avaliação:</S.Text>
-          <S.Nota>{sem_avaliacao}</S.Nota>
-        </S.Number>
       </GradeNotas>
 
       <br />
@@ -83,4 +74,4 @@ const CardAcompanhamento = () => {
     </Base>
   );
 };
-export default CardAcompanhamento;
+export default Avaliador;
