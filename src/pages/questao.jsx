@@ -1,8 +1,6 @@
-import { useEffect } from "react"
-import { BrowserView, MobileView } from "react-device-detect";
-import Questoes from '../components/Questoes'
-import { Base } from "../components/Base";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Questoes from '../components/Questoes';
 const Questao = () => {
   const navigate = useNavigate();
 
@@ -11,18 +9,9 @@ const Questao = () => {
       navigate('/');
     }
   }, []);
-  
+
   return (
-    <Base>
-      <BrowserView>
-        <h1 style={{ textAlign: "center" }}>
-          Esse sistema foi desenvolvido para uso exclusivo pelo Smartphone
-        </h1>
-      </BrowserView>
-      <MobileView>
-        <Questoes />
-      </MobileView>
-    </Base>
-  );
+    <Questoes />
+  )
 }
 export default Questao;
