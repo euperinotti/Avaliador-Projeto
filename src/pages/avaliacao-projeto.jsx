@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import * as S from "./styled";
-import { axiosAvaliado, axiosProjeto } from "../../axios/axios-provider";
-import { Questao } from "../Questao";
-import { Heading } from "../Heading";
-import { Button } from "../Botao";
-import { Base } from "../Base";
+import { axiosAvaliado, axiosProjeto } from "../axios/axios-provider";
+import { Base } from "../components/Base";
+import { Button } from "../components/Botao";
+import { Heading } from "../components/Heading";
+import { Questao } from "../components/Questao";
 
-const Questoes = () => {
+const AvaliacaoProjeto = () => {
   const [titulo, setTitulo] = useState("");
   const [trabalho, setTrabalho] = useState("");
   const [quest1, setQuest1] = useState(0);
@@ -23,16 +22,16 @@ const Questoes = () => {
       setTrabalho(idProjeto);
       setTitulo(titulo);
 
-      // if (erro == 0) {
-      //   alert('Trabalho ja avaliado.');
-      //   window.location.href = '/avaliacao';
-      // }
-      // }else if (erro === 2) {
-      //   alert('Trabalho não disponivel para esse avaliador.');
-      //   window.location.href = '/avaliacao';
-      // }
+      if (erro == 0) {
+        alert('Trabalho ja avaliado.');
+        window.location.href = '/avaliacao';
+      }
+
+    } else if (erro === 2) {
+      alert('Trabalho não disponivel para esse avaliador.');
+      window.location.href = '/avaliacao';
     }
-  };
+  }
 
   const Envio = async () => {
 
@@ -96,4 +95,4 @@ const Questoes = () => {
     </Base>
   )
 };
-export default Questoes;
+export default AvaliacaoProjeto;

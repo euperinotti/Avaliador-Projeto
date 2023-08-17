@@ -42,9 +42,9 @@ const Resultado = () => {
 
       <br /><br />
 
-      {/* <Tabela
+      <Tabela
         data={tabs2}
-      /> */}
+      />
     </Base>
   );
 };

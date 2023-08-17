@@ -1,12 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Resultado from "./pages/resultado";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import './app.css';
 import SemAvaliacao from "./components/SemAvaliacao";
-import VotacaoAberta from "./pages/votacao-aberta";
+import Avaliador from "./pages/avaliador";
 import Leitor from "./pages/leitor";
 import Login from "./pages/login";
-import Questao from "./pages/questao";
-import Avaliador from "./pages/avaliador";
-import './app.css';
+import Resultado from "./pages/resultado";
+import VotacaoAberta from "./pages/votacao-aberta";
+import AvaliacaoProjeto from "./pages/avaliacao-projeto";
 
 
 export default function App() {
@@ -17,7 +17,7 @@ export default function App() {
         <Route path="/" element={<Login />} />
         <Route path="/avaliador" element={<Avaliador />} />
         <Route path="/leitor" element={<Leitor />} />
-        <Route path="/questao" element={<Questao />} />
+        <Route path="/avaliacao-projeto" element={<AvaliacaoProjeto />} />
         <Route path="/resultado" element={<Resultado />} />
         <Route path="/semavaliacao" element={<SemAvaliacao />} />
         <Route path="/votopopular" element={<VotacaoAberta />} />
