@@ -21,11 +21,6 @@ const semAvaliacao = () => {
   }, []);
   return (
     <S.Card>
-      <button style={{marginTop:'3rem',border:'none',backgroundColor:'#228CC8',color:'#fff',height:'3rem'}}
-        onClick={()=>{
-          window.location.href='/avaliacao'
-        }}
-      >Voltar</button>
       <table className="table" style={{backgroundColor:'#fff',marginTop:'2rem'}}>
         <thead className="thead-light">
           <tr>
