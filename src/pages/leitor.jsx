@@ -33,7 +33,7 @@ export default function Leitor() {
       <div>
         {logs.map((log) => {
           window.sessionStorage.setItem('trabalho', log)
-          navigate('/questao')
+          navigate('/avaliacao-projeto')
         })}
       </div>
     </Base>
