@@ -21,6 +21,6 @@ export const Content = styled.div`
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
-  padding: 2rem 1rem;
+  padding: 2.5rem 1rem;
   margin: 0 1rem;
 `
