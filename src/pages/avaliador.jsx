@@ -7,6 +7,7 @@ import { ButtonResult } from '../components/BotaoSecundario';
 import { CardNota } from '../components/CardNota';
 import { GradeNotas } from '../components/GradeNotas';
 import { Heading } from '../components/Heading';
+import auth, { AuthPopup, authAvaliador } from '../auth';
 
 const Avaliador = () => {
   const [avaliados, setAvaliados] = useState(0);
@@ -34,8 +35,8 @@ const Avaliador = () => {
   }
 
   useEffect(() => {
-    if (!window.sessionStorage.getItem('token') && window.sessionStorage.getItem('acesso') != 'avaliador') {
-      navigate('/')
+    if(auth()){
+      return <AuthPopup/>  
     }
     checkTrabalhos();
     checkNaoAvaliados();
@@ -44,6 +45,7 @@ const Avaliador = () => {
 
   return (
     <Base>
+    <AuthPopup/>
       <Heading>Bem Vindo, {window.sessionStorage.getItem('nome')?.toUpperCase()}</Heading>
 
       <GradeNotas>
