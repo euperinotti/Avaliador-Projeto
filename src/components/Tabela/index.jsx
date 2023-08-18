@@ -1,32 +1,27 @@
 import * as S from './styles'
+import { TableHead } from '../TableHead'
 
-export const Tabela = ({ notasAvaliadores, categoria, votoPopular }) => {
+export const Tabela = ({ notasAvaliadores, categoria, votoPopular, colunas }) => {
 
-  let heading = ""
+  // if (categoria == "1") {
+  //   heading = "Produto"
+  // }
 
-  if (categoria == "1") {
-    heading = "Produto"
-  }
+  // if (categoria == "2") {
+  //   heading = "Solução"
+  // }
 
-  if (categoria == "2") {
-    heading = "Solução"
-  }
-
-  if (categoria == "3") {
-    heading = "Aplicativo"
-  }
+  // if (categoria == "3") {
+  //   heading = "Aplicativo"
+  // }
 
   return (
     <>
-      <S.Heading>{heading}</S.Heading>
+      <S.Heading>{categoria}</S.Heading>
       <S.Table>
-        <S.TableHead>
-          <S.Row>
-            <S.Column>Trabalho</S.Column>
-            <S.Column>Voto popular</S.Column>
-            <S.Column>Nota Final</S.Column>
-          </S.Row>
-        </S.TableHead>
+        <TableHead>
+          {colunas.map((e, key) => <S.Column key={key}>{e}</S.Column>)}
+        </TableHead>
 
         <S.TableBody>
           {notasAvaliadores.map((row) => (
@@ -34,14 +29,14 @@ export const Tabela = ({ notasAvaliadores, categoria, votoPopular }) => {
               <S.Column>{row.titulo}</S.Column>
               <S.Column>
                 {votoPopular.map((nt, key) => (
-                nt.id_projeto === row.id_projeto ? nt.voto : '-'
-              ))}
+                  nt.id_projeto === row.id_projeto ? nt.voto : '-'
+                ))}
               </S.Column>
               <S.Column>{row.nota}</S.Column>
             </S.Row>
           ))
           }
-          
+
         </S.TableBody>
 
       </S.Table>

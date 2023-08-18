@@ -8,6 +8,7 @@ const Resultado = () => {
   const [votoPopular, setVotoPopular] = useState([]);
   const [notasAvaliadores2, setNotasAvaliadores2] = useState([]);
   const [votoPopular2, setVotoPopular2] = useState([]);
+  const colunas = ["Trabalho", "Voto Popular", "Nota Final"]
 
   if (window.sessionStorage.getItem('acesso') != 'avaliador') {
     window.location.href = '/'
@@ -37,16 +38,17 @@ const Resultado = () => {
       <Tabela
         notasAvaliadores={notasAvaliadores}
         votoPopular={votoPopular}
-        categoria="1"
+        categoria="Produto"
+        colunas={colunas}
       />
 
       <br /><br />
 
-      <Tabela
+      {/* <Tabela
         notasAvaliadores={notasAvaliadores2}
         votoPopular={votoPopular2}
         categoria="2"
-      />
+      /> */}
     </Base>
   );
 };

@@ -18,15 +18,12 @@ const Avaliador = () => {
   const checkTrabalhos = async () => {
     const json = await axiosCheckTrabalhos();
     const avaliados = json.data;
-
     setAvaliados(avaliados.length);
   }
 
   const checkNaoAvaliados = async () => {
     const json = await axiosCheckNaoAvaliados()
-
     const sem_avaliacao = json.data.quantidade;
-
     setSem_avaliacao(sem_avaliacao);
   }
 
@@ -38,7 +35,7 @@ const Avaliador = () => {
 
   useEffect(() => {
     if (!window.sessionStorage.getItem('token') && window.sessionStorage.getItem('acesso') != 'avaliador') {
-      window.location.href = '/'
+      navigate('/')
     }
     checkTrabalhos();
     checkNaoAvaliados();
@@ -50,11 +47,9 @@ const Avaliador = () => {
       <Heading>Bem Vindo, {window.sessionStorage.getItem('nome')?.toUpperCase()}</Heading>
 
       <GradeNotas>
-
         <CardNota titulo="Trabalhos avaliados" nota={avaliados} />
         <CardNota titulo="Média de notas" nota={media} />
-        <CardNota onClick={() => { window.location.href = '/semavaliacao' }} titulo="Trabalhos sem avaliação" nota={sem_avaliacao} />
-
+        <CardNota onClick={() => { navigate('/semavaliacao') }} titulo="Trabalhos sem avaliação" nota={sem_avaliacao} />
       </GradeNotas>
 
       <br />
