@@ -6,20 +6,26 @@ import { Button } from '../components/Botao';
 import { axiosLogin } from '../axios/axios-provider';
 import { useNavigate } from 'react-router-dom';
 import { Logo } from '../components/Logo';
+import { PopUp } from '../components/PopUp';
 
 const Login = () => {
-  useEffect(() => {
-    window.sessionStorage.clear();
-  }, []);
-
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
+  const [visibility, setVisibility] = useState(false);
   const navigate = useNavigate()
-
+  
   const handlerSubmit = (e) => {
     e.preventDefault();
     loginUsuario();
   }
+  
+  const popupCloseHandler = (e) => {
+    setVisibility(e);
+  };
+
+  useEffect(() => {
+    window.sessionStorage.clear();
+  }, []);
 
   const loginUsuario = async () => {
 
@@ -43,7 +49,7 @@ const Login = () => {
         navigate('/resultado')
       }
     } else {
-      alert("Login ou senha invalidos.");
+      setVisibility(!visibility)
     }
   }
 
@@ -54,7 +60,7 @@ const Login = () => {
         <Input
           type="text"
           placeholder="Usuário do Sagres"
-          label="Login"
+          label="Usuário"
           value={login}
           onChange={(e) => { setLogin(e.target.value) }}
           required
@@ -70,6 +76,7 @@ const Login = () => {
         />
         <Button type="submit">Entrar</Button>
       </Form>
+      <PopUp title={"Erro"} display={visibility} onClose={popupCloseHandler}>Usuário ou senha inválidos</PopUp>
     </Base>
   );
 }

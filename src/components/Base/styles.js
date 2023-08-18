@@ -1,26 +1,23 @@
 import styled from "styled-components";
+import theme from '../../globalStyles'
 
 export const Main = styled.div`
-  width: 100%;
-  min-height: 100vh;
-  background-color: #2b3643;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${theme.align.flexCenter};
+  width: ${theme.dimensions.allDisplay};
+  min-height: ${theme.dimensions.viewHeight};
+  background-color: ${theme.colors.main};
+  padding: ${theme.spacing.small} 0;
   flex-wrap: wrap;
-  padding: 1rem 0;
 `
 
 export const Content = styled.div`
-  background-color: #323E4D;
-  border-radius: 50px;
+  ${theme.misc.roundCorners};
+  ${theme.align.flexCenter};
+  background-color: ${theme.colors.second};
   width: fit-content;
   height: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
-  padding: 2.5rem 1rem;
-  margin: 0 1rem;
+  padding: ${theme.spacing.large} ${theme.spacing.small};
+  margin: 0 ${theme.spacing.small};
 `
