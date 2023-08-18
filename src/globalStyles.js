@@ -3,6 +3,7 @@ const theme = {
     main: "#2b3643",
     second: "#323E4D",
     third: "#485A70",
+    fourth: "#6A82A0",
     blue: "#228CC8"
   },
   font: {
@@ -33,8 +34,9 @@ const theme = {
   },
   misc: {
     roundCorners: {
-      "border-radius":"35px"
-    }
+      "border-radius":"30px"
+    },
+    thinBorder: "border: 1px solid"
   }
 }
 

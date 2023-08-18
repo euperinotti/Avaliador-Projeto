@@ -1,26 +1,26 @@
 import styled from "styled-components";
+import theme from "../../globalStyles";
 
 export const Overlay = styled.div`
 ${
   props => props.show ? {visibility: "visible", opacity: 1} : {visibility: "hidden", opacity: 0}
 }
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: ${theme.dimensions.allDisplay};
+  height: ${theme.dimensions.allDisplay};
   background: rgba(0, 0, 0, 0.3);
   transition: opacity 100ms;
 `
 export const Popup = styled.div`
+  ${theme.misc.thinBorder + theme.colors.fourth};
+  ${theme.misc.roundCorners};
   margin: 35% auto;
-  padding: 1rem;
-  background: #485A70;
-  border-radius: 20px;
-  border: 1px solid #6A82A0;
-  width: fit-content;
+  padding: ${theme.spacing.small};
+  background: ${theme.colors.third};
+  width: 90%;
+  max-width: 470px;
   position: relative;
   transition: all 100ms ease-in-out;
-  max-width: 470px;
-  width: 90%;
 `
 
 export const Close = styled.span`
@@ -28,7 +28,7 @@ export const Close = styled.span`
   top: 20px;
   right: 30px;
   transition: all 100ms;
-  font-size: 30px;
+  font-size: ${theme.font.size.medium};
   font-weight: bold;
   text-decoration: none;
   color: white;

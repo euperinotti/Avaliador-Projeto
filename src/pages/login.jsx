@@ -76,7 +76,7 @@ const Login = () => {
         />
         <Button type="submit">Entrar</Button>
       </Form>
-      <PopUp title={"Erro"} display={visibility} onClose={popupCloseHandler}>Usuário ou senha inválidos</PopUp>
+      <PopUp title={"Acesso Negado"} display={visibility} onClose={popupCloseHandler}>Usuário ou senha inválidos</PopUp>
     </Base>
   );
 }

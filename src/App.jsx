@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import './app.css';
 import SemAvaliacao from "./components/SemAvaliacao";
 import Avaliador from "./pages/avaliador";
 import Leitor from "./pages/leitor";
@@ -7,6 +6,7 @@ import Login from "./pages/login";
 import Resultado from "./pages/resultado";
 import VotacaoAberta from "./pages/votacao-aberta";
 import AvaliacaoProjeto from "./pages/avaliacao-projeto";
+import './app.css';
 
 
 export default function App() {

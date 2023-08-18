@@ -11,7 +11,7 @@ export default function Leitor() {
 
   useEffect(() => {
     if (window.sessionStorage.getItem('id') === null && window.sessionStorage.getItem('id') === null) {
-      window.location.href = '/'
+      navigate('/')
     }
   });
 
