@@ -8,20 +8,19 @@ export const Main = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 30px 0;
+  padding: 1rem 0;
 `
 
 export const Content = styled.div`
   background-color: #364454;
   border-radius: 50px;
-  /* max-width: 700px; */
   width: fit-content;
   height: fit-content;
-  width: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
-  padding: 30px;
+  padding: 1rem;
+  margin: 0 1rem;
 `
