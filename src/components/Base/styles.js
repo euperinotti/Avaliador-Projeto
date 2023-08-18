@@ -16,8 +16,9 @@ export const Content = styled.div`
   background-color: ${theme.colors.second};
   width: fit-content;
   height: fit-content;
-  flex-wrap: wrap;
+  max-height: 80vh;
   flex-direction: column;
-  padding: ${theme.spacing.large} ${theme.spacing.small};
+  padding: ${theme.spacing.medium};
   margin: 0 ${theme.spacing.small};
+  overflow: scroll;
 `

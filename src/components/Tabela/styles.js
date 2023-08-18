@@ -6,12 +6,6 @@ export const Table = styled.table`
   font-size: small;
 `
 
-export const TableHead = styled.thead`
-  background-color: #fff;
-  text-align: center;
-  width: 100%;
-`
-
 export const Column = styled.td`
   width: 25%;
 `
@@ -28,5 +22,5 @@ export const TableBody = styled.tbody`
 `
 
 export const Heading = styled.h2`
-color: white;
+  color: white;
 `

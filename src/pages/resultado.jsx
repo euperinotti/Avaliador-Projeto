@@ -42,13 +42,15 @@ const Resultado = () => {
         colunas={colunas}
       />
 
-      <br /><br />
+      <br />
+      <br />
 
-      {/* <Tabela
+      <Tabela
         notasAvaliadores={notasAvaliadores2}
         votoPopular={votoPopular2}
         categoria="Solução"
-      /> */}
+        colunas={colunas}
+      />
 
       {/* <Tabela
         notasAvaliadores={notasAvaliadores2}
