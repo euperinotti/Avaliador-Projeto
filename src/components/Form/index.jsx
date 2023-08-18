@@ -5,8 +5,9 @@ const Form = (props) => {
 
   return (
     <S.Form onSubmit={props.onSubmit}>
-      <Logo />
-      {props.children}
+      <S.Fields>
+        {props.children}
+      </S.Fields>
     </S.Form>
   )
 };

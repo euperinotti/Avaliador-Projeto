@@ -6,6 +6,7 @@ import Form from "../components/Form";
 import { Heading } from "../components/Heading";
 import { Paragraph } from "../components/Paragraph";
 import { Select } from "../components/Select";
+import { Logo } from "../components/Logo";
 
 const VotacaoAberta = () => {
 
@@ -65,8 +66,8 @@ const VotacaoAberta = () => {
 
   return (
     <Base>
-      <Form onSubmit={e => handlerSubmit(e)}>
-        <Heading>Votação Popular</Heading>
+      <Logo />
+      <Heading>Votação Popular</Heading>
         <Paragraph>
           Selecione o projeto que deseja enviar seu voto e depois clique em
           enviar voto.
@@ -74,7 +75,8 @@ const VotacaoAberta = () => {
           <br />
           <strong>Cada usuário tem direito a 1 voto.</strong>
         </Paragraph>
-
+      <Form onSubmit={e => handlerSubmit(e)}>
+        
         <Select label="produtos" name="categoria1" data={projetos} categoria="1" />
 
         <Select label="soluções" name="categoria2" data={projetos} categoria="2" />

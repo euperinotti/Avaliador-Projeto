@@ -47,7 +47,13 @@ const Resultado = () => {
       {/* <Tabela
         notasAvaliadores={notasAvaliadores2}
         votoPopular={votoPopular2}
-        categoria="2"
+        categoria="Solução"
+      /> */}
+
+      {/* <Tabela
+        notasAvaliadores={notasAvaliadores2}
+        votoPopular={votoPopular2}
+        categoria="Aplicativo"
       /> */}
     </Base>
   );

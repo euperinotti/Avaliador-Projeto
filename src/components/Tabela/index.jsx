@@ -2,19 +2,6 @@ import * as S from './styles'
 import { TableHead } from '../TableHead'
 
 export const Tabela = ({ notasAvaliadores, categoria, votoPopular, colunas }) => {
-
-  // if (categoria == "1") {
-  //   heading = "Produto"
-  // }
-
-  // if (categoria == "2") {
-  //   heading = "Solução"
-  // }
-
-  // if (categoria == "3") {
-  //   heading = "Aplicativo"
-  // }
-
   return (
     <>
       <S.Heading>{categoria}</S.Heading>

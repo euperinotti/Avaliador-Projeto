@@ -5,6 +5,7 @@ import { Input } from '../components/Input';
 import { Button } from '../components/Botao';
 import { axiosLogin } from '../axios/axios-provider';
 import { useNavigate } from 'react-router-dom';
+import { Logo } from '../components/Logo';
 
 const Login = () => {
   useEffect(() => {
@@ -48,6 +49,7 @@ const Login = () => {
 
   return (
     <Base>
+    <Logo />
       <Form onSubmit={(e) => handlerSubmit(e)}>
         <Input
           type="text"

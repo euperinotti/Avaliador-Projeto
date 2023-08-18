@@ -5,8 +5,15 @@ export const Form = styled.form`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 1rem;
   border-radius: 50px;
   width: fit-content;
   height: auto;
+`
+
+export const Fields = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
 `
