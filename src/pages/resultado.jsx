@@ -43,7 +43,9 @@ const Resultado = () => {
       <br /><br />
 
       <Tabela
-        data={tabs2}
+        notasAvaliadores={notasAvaliadores2}
+        votoPopular={votoPopular2}
+        categoria="2"
       />
     </Base>
   );
