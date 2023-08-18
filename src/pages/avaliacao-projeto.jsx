@@ -4,6 +4,7 @@ import { Base } from "../components/Base";
 import { Button } from "../components/Botao";
 import { Heading } from "../components/Heading";
 import { Questao } from "../components/Questao";
+import { auth, AuthPopup } from "../auth";
 
 const AvaliacaoProjeto = () => {
   const [titulo, setTitulo] = useState("");
@@ -12,6 +13,7 @@ const AvaliacaoProjeto = () => {
   const [quest2, setQuest2] = useState(0);
   const [quest3, setQuest3] = useState(0);
   const [quest4, setQuest4] = useState(0);
+  const authUser = auth()
 
 
   const Check = async () => {
@@ -53,6 +55,7 @@ const AvaliacaoProjeto = () => {
 
   return (
     <Base>
+      {!authUser.status && (<AuthPopup message={authUser.message} />)}
       <Heading>{titulo}</Heading>
       <Questao
         titulo="Quão inovadora é a ideia?"

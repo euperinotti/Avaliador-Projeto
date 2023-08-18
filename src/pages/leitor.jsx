@@ -1,19 +1,15 @@
+import { useState } from "react";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { auth, AuthPopup } from "../auth";
 import { Base } from "../components/Base";
 import { Heading } from "../components/Heading";
-import { useNavigate } from "react-router-dom";
 
 export default function Leitor() {
   const [scan, setScan] = useState(true);
   const [logs, setLog] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (window.sessionStorage.getItem('id') === null && window.sessionStorage.getItem('id') === null) {
-      navigate('/')
-    }
-  });
+  const authUser = auth()
 
   const handleUpdate = (error, result) => {
     if (result) {
@@ -24,11 +20,12 @@ export default function Leitor() {
 
   return (
     <Base>
+      {!authUser.status && (<AuthPopup message={authUser.message} />)}
       <Heading>Aponte a câmera para o QrCode</Heading>
       {scan && (
-          <BarcodeScannerComponent
-            onUpdate={handleUpdate}
-          />
+        <BarcodeScannerComponent
+          onUpdate={handleUpdate}
+        />
       )}
       <div>
         {logs.map((log) => {

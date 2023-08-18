@@ -1,7 +1,6 @@
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
-import * as S from  './styles'
 
-export const Leitor = () => {
+export const LeitorQr = () => {
 
   const handleUpdate = (error, result) => {
     try {

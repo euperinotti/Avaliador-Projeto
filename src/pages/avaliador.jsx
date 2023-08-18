@@ -7,14 +7,15 @@ import { ButtonResult } from '../components/BotaoSecundario';
 import { CardNota } from '../components/CardNota';
 import { GradeNotas } from '../components/GradeNotas';
 import { Heading } from '../components/Heading';
-import auth, { AuthPopup, authAvaliador } from '../auth';
+import { auth, authAvaliador, AuthPopup } from '../auth';
 
 const Avaliador = () => {
   const [avaliados, setAvaliados] = useState(0);
   const [media, setMedia] = useState(0);
   const [sem_avaliacao, setSem_avaliacao] = useState(0);
-
+  const authUser = authAvaliador()
   const navigate = useNavigate();
+
 
   const checkTrabalhos = async () => {
     const json = await axiosCheckTrabalhos();
@@ -34,18 +35,20 @@ const Avaliador = () => {
     setMedia(media);
   }
 
-  useEffect(() => {
-    if(auth()){
-      return <AuthPopup/>  
+
+  useEffect(async () => {
+    try {
+      await checkTrabalhos();
+      await checkNaoAvaliados();
+      await checkMedia();
+    } catch (e) {
+      console.log(e)
     }
-    checkTrabalhos();
-    checkNaoAvaliados();
-    checkMedia();
   });
 
   return (
     <Base>
-    <AuthPopup/>
+      {!authUser.status && (<AuthPopup message={authUser.message} />)}
       <Heading>Bem Vindo, {window.sessionStorage.getItem('nome')?.toUpperCase()}</Heading>
 
       <GradeNotas>
