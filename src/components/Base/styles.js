@@ -14,7 +14,8 @@ export const Main = styled.div`
 export const Content = styled.div`
   background-color: #364454;
   border-radius: 50px;
-  max-width: 700px;
+  /* max-width: 700px; */
+  width: fit-content;
   height: fit-content;
   width: 95%;
   display: flex;
