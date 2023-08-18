@@ -6,7 +6,6 @@ export const Button = styled.button`
   border:none;
   width: max-content;
   padding: 0 2rem;
-  margin:0 auto;
   background-color: #FFF;
   color: #228CC8;
   outline: none;
@@ -16,9 +15,5 @@ export const Button = styled.button`
 
   :hover {
     background-color: #165e87;
-  }
-
-  :focus {
-    outline: red;
   }
 `

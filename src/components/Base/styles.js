@@ -12,7 +12,7 @@ export const Main = styled.div`
 `
 
 export const Content = styled.div`
-  background-color: #364454;
+  background-color: #323E4D;
   border-radius: 50px;
   width: fit-content;
   height: fit-content;
@@ -21,6 +21,6 @@ export const Content = styled.div`
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
-  padding: 1.5rem 1rem;
+  padding: 2rem 1rem;
   margin: 0 1rem;
 `
