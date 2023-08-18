@@ -34,7 +34,6 @@ const Resultado = () => {
 
   return (
     <Base>
-
       <Tabela
         notasAvaliadores={notasAvaliadores}
         votoPopular={votoPopular}
@@ -42,7 +41,6 @@ const Resultado = () => {
         colunas={colunas}
       />
 
-      <br />
       <br />
 
       <Tabela

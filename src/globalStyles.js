@@ -17,7 +17,7 @@ const theme = {
   align: {
     flexCenter: {
       "display": "flex",
-      "justify-content": "flex-start",
+      "justify-content": "center",
       "align-items": "center"
     }
   },
