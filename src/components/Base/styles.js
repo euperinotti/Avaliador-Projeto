@@ -20,5 +20,4 @@ export const Content = styled.div`
   flex-direction: column;
   padding: ${theme.spacing.medium};
   margin: 0 ${theme.spacing.small};
-  overflow: scroll;
 `

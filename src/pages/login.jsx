@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react';
-import Form from '../components/Form';
-import { Base } from '../components/Base';
-import { Input } from '../components/Input';
-import { Button } from '../components/Botao';
-import { axiosLogin } from '../axios/axios-provider';
 import { useNavigate } from 'react-router-dom';
-import { Logo } from '../components/Logo';
-import { PopUp } from '../components/PopUp';
+import { axiosLogin } from '../axios/axios-provider';
+import { Base, Input, Button, Logo, PopUp, Form } from '../components';
 
 const Login = () => {
   const [login, setLogin] = useState('');

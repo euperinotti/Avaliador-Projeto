@@ -1,13 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthPopup, authAvaliador } from '../auth';
 import { axiosCheckMedia, axiosCheckNaoAvaliados, axiosCheckTrabalhos } from '../axios/axios-provider';
-import { Base } from '../components/Base';
-import { Button } from '../components/Botao';
-import { ButtonResult } from '../components/BotaoSecundario';
-import { CardNota } from '../components/CardNota';
-import { GradeNotas } from '../components/GradeNotas';
-import { Heading } from '../components/Heading';
-import { auth, authAvaliador, AuthPopup } from '../auth';
+import { Base, Button, ButtonResult, CardNota, GradeNotas, Heading } from '../components';
 
 const Avaliador = () => {
   const [avaliados, setAvaliados] = useState(0);

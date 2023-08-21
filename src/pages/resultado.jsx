@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { axiosResultado } from "../axios/axios-provider";
-import { Base } from "../components/Base";
-import { Tabela } from "../components/Tabela";
+import { Base, Tabela } from "../components";
 
 const Resultado = () => {
   const [notasAvaliadores, setNotasAvaliadores] = useState([]);

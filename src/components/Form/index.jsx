@@ -1,7 +1,6 @@
-import { Logo } from '../Logo';
 import * as S from './styled';
 
-const Form = (props) => {
+export const Form = (props) => {
 
   return (
     <S.Form onSubmit={props.onSubmit}>
@@ -11,5 +10,3 @@ const Form = (props) => {
     </S.Form>
   )
 };
-
-export default Form;

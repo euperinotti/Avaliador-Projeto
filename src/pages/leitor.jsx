@@ -2,8 +2,7 @@ import { useState } from "react";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import { useNavigate } from "react-router-dom";
 import { auth, AuthPopup } from "../auth";
-import { Base } from "../components/Base";
-import { Heading } from "../components/Heading";
+import { Base, Heading } from "../components";
 
 export default function Leitor() {
   const [scan, setScan] = useState(true);

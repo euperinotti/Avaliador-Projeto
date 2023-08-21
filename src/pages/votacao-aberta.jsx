@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
+import { AuthPopup, auth } from "../auth";
 import { axiosCheckVoto, axiosParticipantes, axiosVotoPopular } from "../axios/axios-provider";
-import { Base } from "../components/Base";
-import { Button } from "../components/Botao";
-import Form from "../components/Form";
-import { Heading } from "../components/Heading";
-import { Paragraph } from "../components/Paragraph";
-import { Select } from "../components/Select";
-import { Logo } from "../components/Logo";
-import { auth, AuthPopup } from "../auth";
+import { Base, Button, Form, Heading, Logo, Paragraph, Select } from "../components";
 
 const VotacaoAberta = () => {
   const [projetos, setProjetos] = useState([]);
@@ -64,8 +58,8 @@ const VotacaoAberta = () => {
 
   return (
     <Base>
-    {!authUser.status && (<AuthPopup message={authUser.message} />)}
-    {!podeVotar && (<AuthPopup message={"Você já votou"} />)}
+      {!authUser.status && (<AuthPopup message={authUser.message} />)}
+      {!podeVotar && (<AuthPopup message={"Você já votou"} />)}
       <Logo />
       <Heading>Votação Popular</Heading>
       <Paragraph>
