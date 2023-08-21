@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthPopup, auth } from "../auth";
 import { axiosAvaliado, axiosProjeto } from "../axios/axios-provider";
-import { Base } from "../components/Base";
-import { Button } from "../components/Botao";
-import { Heading } from "../components/Heading";
-import { Questao } from "../components/Questao";
-import { auth, AuthPopup } from "../auth";
+import { Base, Button, Heading, Questao } from "../components";
 
 const AvaliacaoProjeto = () => {
   const [titulo, setTitulo] = useState("");
@@ -14,9 +12,10 @@ const AvaliacaoProjeto = () => {
   const [quest3, setQuest3] = useState(0);
   const [quest4, setQuest4] = useState(0);
   const authUser = auth()
+  const navigate = useNavigate()
 
 
-  const Check = async () => {
+  const jaFoiAvaliado = async () => {
     const json = await axiosProjeto();
 
     if (json) {
@@ -25,32 +24,37 @@ const AvaliacaoProjeto = () => {
       setTitulo(titulo);
 
       if (erro == 0) {
-        alert('Trabalho ja avaliado.');
-        window.location.href = '/avaliacao';
+        authUser.status = false
+        authUser.message = "Esse projeto já foi avaliado"
+        return true
       }
 
-    } else if (erro === 2) {
-      alert('Trabalho não disponivel para esse avaliador.');
-      window.location.href = '/avaliacao';
+      if (erro === 2) {
+        return false
+      }
+
     }
   }
 
-  const Envio = async () => {
+  const handleSubmit = async () => {
 
-    const json = await axiosAvaliado(trabalho, quest1, quest2, quest3, quest4)
+    const status = await jaFoiAvaliado()
 
-    const { id_avaliacao } = json;
+    if (!status) {
+      const json = await axiosAvaliado(trabalho, quest1, quest2, quest3, quest4)
+      const { id_avaliacao } = json;
 
-    if (id_avaliacao) {
-      window.sessionStorage.removeItem('trabalho');
-      window.location.href = '/avaliador';
+      if (id_avaliacao) {
+        window.sessionStorage.removeItem('trabalho');
+        navigate('/avaliador');
+      }
     }
 
   }
 
-  useEffect(() => {
-    Check();
-  });
+  // useEffect(() => {
+  //   Check();
+  // });
 
 
   return (
@@ -93,7 +97,7 @@ const AvaliacaoProjeto = () => {
       )}
 
       {quest4 !== 0 && (
-        <Button onClick={Envio}>Finalizar avaliação</Button>
+        <Button onClick={handleSubmit}>Finalizar avaliação</Button>
       )}
     </Base>
   )
