@@ -4,14 +4,18 @@ const theme = {
     second: "#323E4D",
     third: "#485A70",
     fourth: "#6A82A0",
-    blue: "#228CC8"
+    blue: "#228CC8",
+    white: "#FFF"
   },
   font: {
     size: {
-      small: "1rem",
+      xsmall: "1rem",
+      small: "1.25rem",
       medium: "1.5rem",
       large: "2rem",
-      xlarge: "2.5rem"
+      xlarge: "2.5rem",
+      xxlarge: "3rem",
+      giant: "4rem"
     }
   },
   align: {

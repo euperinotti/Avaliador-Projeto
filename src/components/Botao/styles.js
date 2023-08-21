@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "../../globalStyles";
 
 export const Button = styled.button`
   height: 2.5rem;
@@ -7,11 +8,11 @@ export const Button = styled.button`
   width: max-content;
   padding: 0 2rem;
   margin: 0 auto;
-  background-color: #228CC8;
-  color: #fff;
+  background-color: ${theme.colors.blue};
+  color: ${theme.colors.white};
   outline: none;
   cursor: pointer;
-  font-size: large;
+  font-size: ${theme.font.size.small};
   transition: 200ms;
 
   :hover {

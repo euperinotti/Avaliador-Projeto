@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import media from "styled-media-query"
 import theme from '../../globalStyles'
 
 export const Main = styled.div`
@@ -20,4 +21,9 @@ export const Content = styled.div`
   flex-direction: column;
   padding: ${theme.spacing.medium};
   margin: 0 ${theme.spacing.small};
+  overflow: hidden;
+  ${media.lessThan("medium")`
+    overflow: scroll;
+    justify-content: flex-start;
+  `}
 `

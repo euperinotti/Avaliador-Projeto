@@ -47,9 +47,9 @@ const Avaliador = () => {
       <Heading>Bem Vindo, {window.sessionStorage.getItem('nome')?.toUpperCase()}</Heading>
 
       <GradeNotas>
-        <CardNota titulo="Trabalhos avaliados" nota={avaliados} />
+        <CardNota titulo="Trabalhos Avaliados" nota={avaliados} />
         <CardNota titulo="Média de notas" nota={media} />
-        <CardNota onClick={() => { navigate('/semavaliacao') }} titulo="Trabalhos sem avaliação" nota={sem_avaliacao} />
+        <CardNota onClick={() => { navigate('/semavaliacao') }} titulo="Trabalhos Sem Avaliação" nota={sem_avaliacao} />
       </GradeNotas>
 
       <br />
