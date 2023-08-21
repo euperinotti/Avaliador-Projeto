@@ -24,3 +24,7 @@ export const TableBody = styled.tbody`
 export const Heading = styled.h2`
   color: white;
 `
+
+export const Container = styled.div`
+width: 100%;
+`
