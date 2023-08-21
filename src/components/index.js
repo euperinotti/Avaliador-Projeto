@@ -18,5 +18,6 @@ export * from './Questao'
 export * from './Select'
 export * from './Tabela'
 export * from './TableHead'
+export * from './TableContainer'
 
 

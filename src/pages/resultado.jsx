@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { axiosResultado } from "../axios/axios-provider";
-import { Base, Tabela } from "../components";
+import { Base, Tabela, TableContainer } from "../components";
 import { useNavigate } from "react-router-dom";
 import { authAvaliador, AuthPopup } from "../auth";
 
@@ -27,22 +27,32 @@ const Resultado = () => {
 
   return (
     <Base>
-    {!authUser.status && (<AuthPopup message={authUser.message} />)}
-      <Tabela
-        resultado={resultadoProduto}
-        categoria="Produto"
-        colunas={colunas}
-      />
+      {!authUser.status && (<AuthPopup message={authUser.message} />)}
+      <TableContainer>
+        <Tabela
+          resultado={resultadoProduto}
+          categoria="Produto"
+          colunas={colunas}
+        />
 
-      <br />
+        <br />
 
-      <Tabela
-        resultado={resultadoSolucao}
-        categoria="Solução"
-        colunas={colunas}
-      />
-      
+        <Tabela
+          resultado={resultadoSolucao}
+          categoria="Solução"
+          colunas={colunas}
+        />
+
+        <br />
+
+        <Tabela
+          resultado={resultadoSolucao}
+          categoria="Solução"
+          colunas={colunas}
+        />
+      </TableContainer>
+
     </Base>
-  );
+  )
 };
 export default Resultado;
