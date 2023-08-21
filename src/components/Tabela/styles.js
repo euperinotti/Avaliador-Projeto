@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import theme from "../../globalStyles";
 
 export const Table = styled.table`
   text-align: center;
   width: 100%;
-  font-size: small;
+  font-size: ${theme.font.size.small};
+  border-radius: 20px;
+  border: 2px solid white;
 `
 
 export const Column = styled.td`
@@ -13,18 +16,18 @@ export const Column = styled.td`
 export const Row = styled.tr`
   text-align: center;
   height: 4rem;
-  padding: 1rem 0;
+  padding: ${theme.spacing.small} 0;
   border-bottom: 1px solid white;
 `
 
 export const TableBody = styled.tbody`
-  color: white;
+  color: ${theme.colors.white};
 `
 
 export const Heading = styled.h2`
-  color: white;
+  color: ${theme.colors.white};
 `
 
 export const Container = styled.div`
-width: 100%;
+  width: 100%;
 `

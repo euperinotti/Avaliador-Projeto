@@ -10,7 +10,7 @@ const theme = {
   font: {
     size: {
       xsmall: "1rem",
-      small: "1.25rem",
+      small: "1.15rem",
       medium: "1.5rem",
       large: "2rem",
       xlarge: "2.5rem",
