@@ -15,7 +15,8 @@
     "react-qr-reader": "2.2.1",
     "react-router-dom": "^6.4.2",
     "react-scripts": "^5.0.1",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.9",
