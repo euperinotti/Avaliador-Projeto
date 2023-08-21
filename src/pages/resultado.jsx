@@ -1,27 +1,21 @@
 import { useEffect, useState } from "react";
 import { axiosResultado } from "../axios/axios-provider";
 import { Base, Tabela } from "../components";
+import { useNavigate } from "react-router-dom";
+import { authAvaliador, AuthPopup } from "../auth";
 
 const Resultado = () => {
-  const [notasAvaliadores, setNotasAvaliadores] = useState([]);
-  const [votoPopular, setVotoPopular] = useState([]);
-  const [notasAvaliadores2, setNotasAvaliadores2] = useState([]);
-  const [votoPopular2, setVotoPopular2] = useState([]);
-  const colunas = ["Trabalho", "Voto Popular", "Nota Final"]
-
-  if (window.sessionStorage.getItem('acesso') != 'avaliador') {
-    window.location.href = '/'
-  }
+  const [resultadoProduto, setResultadoProduto] = useState([]);
+  const [resultadoSolucao, setResultadoSolucao] = useState([]);
+  const colunas = ["Trabalho", "Voto Popular", "Nota Final"];
+  const authUser = authAvaliador();
 
   const check = async () => {
     const json = await axiosResultado();
 
     if (json) {
-      const { resultadoCategoria1, resultadoCategoria2 } = json;
-      setNotasAvaliadores(resultadoCategoria1.notasAvaliadores);
-      setVotoPopular(resultadoCategoria1.votacaoPopular);
-      setNotasAvaliadores2(resultadoCategoria2.notasAvaliadores);
-      setVotoPopular2(resultadoCategoria2.votacaoPopular)
+      setResultadoProduto(json.filter((e) => e.categoria == 1).slice(0, 6))
+      setResultadoSolucao(json.filter((e) => e.categoria == 2).slice(0, 6))
     } else {
       alert('Nenhum resultado encontrado')
     }
@@ -33,9 +27,9 @@ const Resultado = () => {
 
   return (
     <Base>
+    {!authUser.status && (<AuthPopup message={authUser.message} />)}
       <Tabela
-        notasAvaliadores={notasAvaliadores}
-        votoPopular={votoPopular}
+        resultado={resultadoProduto}
         categoria="Produto"
         colunas={colunas}
       />
@@ -43,17 +37,11 @@ const Resultado = () => {
       <br />
 
       <Tabela
-        notasAvaliadores={notasAvaliadores2}
-        votoPopular={votoPopular2}
+        resultado={resultadoSolucao}
         categoria="Solução"
         colunas={colunas}
       />
-
-      {/* <Tabela
-        notasAvaliadores={notasAvaliadores2}
-        votoPopular={votoPopular2}
-        categoria="Aplicativo"
-      /> */}
+      
     </Base>
   );
 };
