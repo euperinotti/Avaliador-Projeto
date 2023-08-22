@@ -19,7 +19,7 @@ export const PopUp = ({ onClose, children, title, display }) => {
   return (
     <S.Overlay show={show}>
       <S.Popup>
-        <Heading>{title}</Heading>
+        <S.Heading>{title}</S.Heading>
         <S.Close onClick={closeHandler}>&times;</S.Close>
         <S.Content>{children}</S.Content>
       </S.Popup>

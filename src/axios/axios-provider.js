@@ -35,10 +35,17 @@ export const axiosVotoPopular = async (voto, idPessoa) => {
 }
 
 export const axiosParticipantes = async () => {
-  return await axios.get(
-    `${URL}participantes.php`,
-    config
-  );
+
+  try {
+    const res = await axios.get(
+      `${URL}participantes.php`,
+      config
+    );
+
+    return res.data
+  } catch (e) {
+    console.log(err)
+  }
 }
 
 export const axiosCheckVoto = async (idPessoa) => {

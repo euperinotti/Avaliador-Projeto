@@ -50,6 +50,7 @@ const Login = () => {
 
   return (
     <Base>
+    <PopUp title={"Acesso Negado"} display={visibility} onClose={popupCloseHandler}>Usuário ou senha inválidos</PopUp>
     <Logo />
       <Form onSubmit={(e) => handlerSubmit(e)}>
         <Input
@@ -71,7 +72,6 @@ const Login = () => {
         />
         <Button type="submit">Entrar</Button>
       </Form>
-      <PopUp title={"Acesso Negado"} display={visibility} onClose={popupCloseHandler}>Usuário ou senha inválidos</PopUp>
     </Base>
   );
 }

@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { AuthPopup, auth } from "../auth";
 import { axiosCheckVoto, axiosParticipantes, axiosVotoPopular } from "../axios/axios-provider";
 import { Base, Button, Form, Heading, Logo, Paragraph, Select } from "../components";
+import { useNavigate } from "react-router-dom";
 
 const VotacaoAberta = () => {
   const [projetos, setProjetos] = useState([]);
   const [podeVotar, setPodeVotar] = useState(true)
   const authUser = auth()
+  const navigate = useNavigate()
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
@@ -16,18 +18,34 @@ const VotacaoAberta = () => {
     await enviar(voto1.value, voto2.value, voto3.value);
   };
 
+  // useEffect(async () => {
+  //   try {
+  //     return await participante();
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }, [projetos]);
+
+  // useEffect(async () => {
+  //   try {
+  //     return await checkVoto();
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }, [podeVotar]);
+
   useEffect(async () => {
     try {
-      await participante();
       await checkVoto();
+      await participante();
     } catch (e) {
       console.log(e);
     }
-  }, []);
+  });
 
   const participante = async () => {
     const json = await axiosParticipantes()
-    const projetos = json.data.participantes;
+    const projetos = json.participantes;
 
     setProjetos(projetos);
   };
@@ -50,7 +68,7 @@ const VotacaoAberta = () => {
     if (codigo == 200) {
       alert(status);
       window.sessionStorage.clear();
-      window.location.href = '/';
+      navigate('/');
     } else {
       alert('Ops tivemos um erro, favor atualizar a pagina e tentar de novo.')
     }

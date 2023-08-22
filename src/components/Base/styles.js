@@ -4,7 +4,7 @@ import theme from '../../globalStyles'
 
 export const Main = styled.div`
   ${theme.align.flexCenter};
-  width: ${theme.dimensions.allDisplay};
+  width: ${theme.dimensions.viewWidth};
   min-height: ${theme.dimensions.viewHeight};
   background-color: ${theme.colors.main};
   padding: ${theme.spacing.small} 0;
@@ -17,13 +17,13 @@ export const Content = styled.div`
   background-color: ${theme.colors.second};
   width: fit-content;
   height: fit-content;
-  max-height: 80vh;
+  max-height: 100vh;
   flex-direction: column;
   padding: ${theme.spacing.medium};
   margin: 0 ${theme.spacing.small};
-  overflow: hidden;
+  overflow: visible;
   ${media.lessThan("medium")`
     overflow: scroll;
-    justify-content: flex-start;
+    justify-content: center;
   `}
 `
