@@ -18,8 +18,8 @@ export const axiosLogin = async (login, senha) => {
       }))
 
     return res.data
-  } catch (err) {
-    console.log(err)
+  } catch (e) {
+    console.log(e)
   }
 }
 
@@ -44,18 +44,25 @@ export const axiosParticipantes = async () => {
 
     return res.data
   } catch (e) {
-    console.log(err)
+    console.log(e)
   }
 }
 
-export const axiosCheckVoto = async (idPessoa) => {
-  return await axios.post(
-    `${URL}check-voto-popular.php`,
-    JSON.stringify({
-      id: idPessoa,
-    }),
-    config
-  );
+export const axiosCheckVoto = async () => {
+  try {
+    const res = await axios.post(
+      `${URL}check-voto-popular.php`,
+      JSON.stringify({
+        id: window.sessionStorage.getItem('id'),
+      }),
+      config
+    );
+
+    return res.data
+    
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 export const axiosCheckMedia = async () => {
@@ -106,8 +113,8 @@ export const axiosAvaliado = async (idProjeto, quest1, quest2, quest3, quest4) =
     );
 
     return res.data
-  } catch (err) {
-    console.log(err)
+  } catch (e) {
+    console.log(e)
   }
 }
 
@@ -119,8 +126,8 @@ export const axiosResultado = async () => {
     );
 
     return res.data
-  } catch (err) {
-    console.log(err)
+  } catch (e) {
+    console.log(e)
   }
 };
 
@@ -137,7 +144,7 @@ export const axiosProjeto = async () => {
     );
 
     return res.data
-  } catch (err) {
-    console.log(err)
+  } catch (e) {
+    console.log(e)
   }
 }

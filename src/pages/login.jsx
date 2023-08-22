@@ -40,8 +40,6 @@ const Login = () => {
       } else if (acesso == 'avaliador') {
         window.sessionStorage.setItem('id', id);
         navigate('/avaliador')
-      } else {
-        navigate('/resultado')
       }
     } else {
       setVisibility(!visibility)
