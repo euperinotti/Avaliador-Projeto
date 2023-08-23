@@ -8,6 +8,10 @@ const Login = () => {
   const [senha, setSenha] = useState('');
   const [visibility, setVisibility] = useState(false);
   const navigate = useNavigate()
+
+  useEffect(() => {
+    window.localStorage.clear()
+  }, [])
   
   const handlerSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +23,6 @@ const Login = () => {
   };
 
   const loginUsuario = async () => {
-
     const json = await axiosLogin(login, senha)
 
     if (json) {
@@ -33,7 +36,7 @@ const Login = () => {
       if (acesso == "popular") {
         window.sessionStorage.setItem('id', id);
         navigate('/votopopular')
-      } else if (acesso == 'avaliador') {
+      } else {
         window.sessionStorage.setItem('id', id);
         navigate('/avaliador')
       }

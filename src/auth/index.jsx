@@ -37,7 +37,7 @@ export const authAvaliador = () => {
   }
 }
 
-export const AuthPopup = ({ message }) => {
+export const AuthPopup = ({ message, link }) => {
 
   const navigate = useNavigate()
 
@@ -50,7 +50,7 @@ export const AuthPopup = ({ message }) => {
       {message}
       <br />
       <br />
-      <Button onClick={(e) => { navigate('/') }}>Voltar ao login</Button>
+      <Button onClick={(e) => { link ? navigate(link) : navigate('/') }}>Voltar</Button>
     </PopUp>
   )
 }

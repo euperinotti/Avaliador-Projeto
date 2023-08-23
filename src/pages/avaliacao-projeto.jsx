@@ -13,12 +13,13 @@ const AvaliacaoProjeto = () => {
   const [quest4, setQuest4] = useState(0);
   const authUser = auth()
   const navigate = useNavigate()
+  let link = null
 
 
   const jaFoiAvaliado = async () => {
     const json = await axiosProjeto();
 
-    if (json) {
+    if (json.idProjeto) {
       const { idProjeto, titulo, erro } = json;
       setTrabalho(idProjeto);
       setTitulo(titulo);
@@ -26,13 +27,16 @@ const AvaliacaoProjeto = () => {
       if (erro == 0) {
         authUser.status = false
         authUser.message = "Esse projeto já foi avaliado"
+        link = '/leitor'
         return true
       }
 
       if (erro === 2) {
         return false
       }
-
+    } else {
+      authUser.status = false;
+      authUser.message = "Trabalho inválido";
     }
   }
 
@@ -52,14 +56,9 @@ const AvaliacaoProjeto = () => {
 
   }
 
-  // useEffect(() => {
-  //   Check();
-  // });
-
-
   return (
     <Base>
-      {!authUser.status && (<AuthPopup message={authUser.message} />)}
+      {!authUser.status && (<AuthPopup message={authUser.message} link={ link ? link : '/' } />)}
       <Heading>{titulo}</Heading>
       <Questao
         titulo="Quão inovadora é a ideia?"
