@@ -49,27 +49,25 @@ export const axiosParticipantes = async () => {
 }
 
 export const axiosCheckVoto = async () => {
-  try {
-    const res = await axios.post(
-      `${URL}check-voto-popular.php`,
-      JSON.stringify({
-        id: window.sessionStorage.getItem('id'),
-      }),
-      config
-    );
+  console.log(window.sessionStorage.getItem('id'))
+  console.log(window.sessionStorage.getItem('token'))
 
-    return res.data
-    
-  } catch (e) {
-    console.log(e)
-  }
+  const res = await axios.post(
+    `${URL}check-voto-popular.php`,
+    JSON.stringify({
+      id: window.sessionStorage.getItem('id'),
+    }),
+    config
+  );
+
+  return res.data
 }
 
-export const axiosCheckMedia = async () => {
+export const axiosCheckMedia = async (id) => {
   return await axios.get(
     `${URL}media.php`, {
     params: {
-      id: window.sessionStorage.getItem('id')
+      id: id
     },
     headers: config.headers
   }
@@ -87,11 +85,11 @@ export const axiosCheckNaoAvaliados = async () => {
   );
 }
 
-export const axiosCheckTrabalhos = async () => {
+export const axiosCheckTrabalhos = async (id) => {
   return await axios.get(
     `${URL}avaliados.php`, {
     params: {
-      id: window.sessionStorage.getItem('id')
+      id: id
     },
     headers: config.headers
   }

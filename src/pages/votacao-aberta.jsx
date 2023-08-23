@@ -10,6 +10,11 @@ const VotacaoAberta = () => {
   const authUser = auth()
   const navigate = useNavigate()
 
+  useEffect(async () => {
+    await checkVoto()
+    await participante()
+  });
+
   const handlerSubmit = async (e) => {
     e.preventDefault();
     const voto1 = document.querySelector("select[name='categoria1']")
@@ -18,33 +23,30 @@ const VotacaoAberta = () => {
     await enviar(voto1.value, voto2.value, voto3.value);
   };
 
-  useEffect(async () => {
+  const checkVoto = async () => {
     try {
-      const checkVoto = async () => {
-        const json = await axiosCheckVoto()
-        const { codigo } = json;
-    
-        if (codigo === 200) {
-          setPodeVotar(false)
-        }
-      }
-      
-      const participante = async () => {
-        const json = await axiosParticipantes();
-        const projetos = json.participantes;
-    
-        setProjetos(projetos);
-      }
+      const json = await axiosCheckVoto()
+      const { codigo } = json;
 
-      await checkVoto()
-      await participante()
-
+      if (codigo === 200) {
+        setPodeVotar(false)
+      }
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
-  }, []);
+  }
 
-  
+  const participante = async () => {
+
+    try {
+      const json = await axiosParticipantes();
+      const projetos = json.participantes;
+
+      setProjetos(projetos);
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   const enviar = async (voto1, voto2, voto3) => {
     const json = await axiosVotoPopular(voto1, window.sessionStorage.getItem('id'))

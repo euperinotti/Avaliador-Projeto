@@ -9,18 +9,14 @@ const Login = () => {
   const [visibility, setVisibility] = useState(false);
   const navigate = useNavigate()
   
-  const handlerSubmit = (e) => {
+  const handlerSubmit = async (e) => {
     e.preventDefault();
-    loginUsuario();
+    await loginUsuario();
   }
   
   const popupCloseHandler = (e) => {
     setVisibility(e);
   };
-
-  useEffect(() => {
-    window.sessionStorage.clear();
-  }, []);
 
   const loginUsuario = async () => {
 

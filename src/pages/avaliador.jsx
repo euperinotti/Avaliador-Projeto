@@ -13,7 +13,7 @@ const Avaliador = () => {
 
 
   const checkTrabalhos = async () => {
-    const json = await axiosCheckTrabalhos();
+    const json = await axiosCheckTrabalhos(window.sessionStorage.getItem('id'));
     const avaliados = json.data;
     setAvaliados(avaliados.length);
   }
@@ -25,20 +25,16 @@ const Avaliador = () => {
   }
 
   const checkMedia = async () => {
-    const json = await axiosCheckMedia();
+    const json = await axiosCheckMedia(window.sessionStorage.getItem('id'));
     const { media } = json.data;
     setMedia(media);
   }
 
 
   useEffect(async () => {
-    try {
       await checkTrabalhos();
       await checkNaoAvaliados();
       await checkMedia();
-    } catch (e) {
-      console.log(e)
-    }
   });
 
   return (
