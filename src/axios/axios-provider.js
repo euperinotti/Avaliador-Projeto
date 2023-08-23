@@ -1,14 +1,23 @@
 import axios from "axios";
 
 const URL = 'https://www4.fag.edu.br/api_summit/src/rotas/'
-const config = {
-  headers: {
-    'Authorization': `Bearer ${window.sessionStorage.getItem('token')}`
+
+const init = () => {
+  const token = window.sessionStorage.getItem('token')
+  const headers = {
+    'Authorization': `Bearer ${token}`
+  }
+  return {
+    id: window.sessionStorage.getItem('id'),
+    nome: window.sessionStorage.getItem('nome'),
+    tipo: window.sessionStorage.getItem('tipo'),
+    acesso: window.sessionStorage.getItem('acesso'),
+    token,
+    headers,
   }
 }
 
 export const axiosLogin = async (login, senha) => {
-
   try {
     const res = await axios.post(
       `${URL}login.php`,
@@ -24,22 +33,37 @@ export const axiosLogin = async (login, senha) => {
 }
 
 export const axiosVotoPopular = async (voto, idPessoa) => {
-  return await axios.post(
-    `${URL}voto-popular.php`,
-    JSON.stringify({
-      id_projeto: voto,
-      id_pessoa: idPessoa
-    }),
-    config
-  );
+
+  const data = init()
+
+  try {
+    const res = await axios.post(
+      `${URL}voto-popular.php`,
+      JSON.stringify({
+        id_projeto: voto,
+        id_pessoa: idPessoa
+      }),
+      {
+        headers: data.headers
+      }
+    );
+
+    return res.data
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 export const axiosParticipantes = async () => {
 
+  const data = init()
+
   try {
     const res = await axios.get(
       `${URL}participantes.php`,
-      config
+      {
+        headers: data.headers
+      }
     );
 
     return res.data
@@ -49,65 +73,104 @@ export const axiosParticipantes = async () => {
 }
 
 export const axiosCheckVoto = async () => {
-  console.log(window.sessionStorage.getItem('id'))
-  console.log(window.sessionStorage.getItem('token'))
 
-  const res = await axios.post(
-    `${URL}check-voto-popular.php`,
-    JSON.stringify({
-      id: window.sessionStorage.getItem('id'),
-    }),
-    config
-  );
+  const data = init()
 
-  return res.data
+  try {
+   
+    const res = await axios.post(
+      `${URL}check-voto-popular.php`,
+      JSON.stringify({
+        id: data.id,
+      }),
+      {
+        headers: data.headers
+      }
+    );
+  
+    return res.data
+    
+  } catch (e) {
+    console.log(e)
+  }
 }
 
-export const axiosCheckMedia = async (id) => {
-  return await axios.get(
-    `${URL}media.php`, {
-    params: {
-      id: id
-    },
-    headers: config.headers
+export const axiosCheckMedia = async () => {
+  const data = init()
+
+  try {
+    const res = await axios.get(
+      `${URL}media.php`, {
+      params: {
+        id: data.id
+      },
+      headers: data.headers
+    }
+    );
+
+    return res.data
+  } catch (e) {
+    console.log(e)
   }
-  );
 }
 
 export const axiosCheckNaoAvaliados = async () => {
-  return await axios.get(
-    `${URL}sem-avaliacao.php`, {
-    params: {
-      id: window.sessionStorage.getItem('id')
-    },
-    headers: config.headers
+
+  const data = init()
+
+  try {
+    const res = await axios.get(
+      `${URL}sem-avaliacao.php`, {
+      params: {
+        id: data.id
+      },
+      headers: data.headers
+    }
+    );
+
+    return res.data
+  } catch (e) {
+    console.log(e)
   }
-  );
+
+  return
 }
 
-export const axiosCheckTrabalhos = async (id) => {
-  return await axios.get(
-    `${URL}avaliados.php`, {
-    params: {
-      id: id
-    },
-    headers: config.headers
+export async function axiosCheckTrabalhos() {
+  const data = init()
+  try {
+    const res = await axios.get(
+      `${URL}avaliados.php`, {
+      params: {
+        id: data.id
+      },
+      headers: data.headers
+    }
+    );
+
+    return res.data
+  } catch (e) {
+    console.log(e)
   }
-  );
 }
 
 export const axiosAvaliado = async (idProjeto, quest1, quest2, quest3, quest4) => {
+
+  const data = init()
+
   try {
     const res = await axios.post(
       `${URL}avaliado.php`,
       JSON.stringify({
-        avaliador: window.sessionStorage.getItem('id'),
+        avaliador: data.id,
         quest1,
         quest2,
         quest3,
         quest4,
         id_projeto: idProjeto,
-      }), config
+      }), {
+        headers: data.headers
+      }
     );
 
     return res.data
@@ -117,10 +180,13 @@ export const axiosAvaliado = async (idProjeto, quest1, quest2, quest3, quest4) =
 }
 
 export const axiosResultado = async () => {
+  const data = init()
   try {
     const res = await axios.get(
       `${URL}resultado.php`,
-      config
+      {
+        headers: data.headers
+      }
     );
 
     return res.data
@@ -130,6 +196,7 @@ export const axiosResultado = async () => {
 };
 
 export const axiosProjeto = async () => {
+  const data = init()
   try {
     const res = await axios.get(
       `${URL}projeto.php`,
@@ -137,7 +204,7 @@ export const axiosProjeto = async () => {
         params: {
           id: window.sessionStorage.getItem('id'),
           qr: window.sessionStorage.getItem('trabalho')
-        }, headers: config.headers
+        }, headers: data.headers
       }
     );
 
