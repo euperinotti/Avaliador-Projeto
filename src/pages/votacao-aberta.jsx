@@ -13,7 +13,20 @@ const VotacaoAberta = () => {
   useEffect(async () => {
     await checkVoto()
     await participante()
+
+    async function fetchData() {
+      try {
+        await checkVoto()
+        await participante()
+      } catch (e) {
+        console.log(e)
+      }
+    }
+
+    fetchData()
   });
+
+  
 
   const handlerSubmit = async (e) => {
     e.preventDefault();

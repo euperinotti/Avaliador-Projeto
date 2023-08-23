@@ -12,30 +12,44 @@ const Avaliador = () => {
   const navigate = useNavigate();
 
 
-  const checkTrabalhos = async () => {
-    const json = await axiosCheckTrabalhos(window.sessionStorage.getItem('id'));
-    const avaliados = json.data;
-    setAvaliados(avaliados.length);
-  }
+  useEffect(() => {
 
-  const checkNaoAvaliados = async () => {
-    const json = await axiosCheckNaoAvaliados()
-    const sem_avaliacao = json.data.quantidade;
-    setSem_avaliacao(sem_avaliacao);
-  }
+    async function fetchData() {
+      try {
 
-  const checkMedia = async () => {
-    const json = await axiosCheckMedia(window.sessionStorage.getItem('id'));
-    const { media } = json.data;
-    setMedia(media);
-  }
+        const trabalhosAvaliados = await axiosCheckTrabalhos();
+        const trabalhosNaoAvaliados = await axiosCheckNaoAvaliados();
+        const mediaTrabalhos = await axiosCheckMedia(window.sessionStorage.getItem('id'));
 
+        setAvaliados(trabalhosAvaliados.length)
+        setSem_avaliacao(trabalhosNaoAvaliados.quantidade)
+        setMedia(mediaTrabalhos.media)
 
-  useEffect(async () => {
-      await checkTrabalhos();
-      await checkNaoAvaliados();
-      await checkMedia();
-  });
+      } catch (e) {
+        console.log(e)
+      }
+    }
+
+    fetchData()
+  },[]);
+
+  // const checkTrabalhos = async () => {
+  //   const json = await axiosCheckTrabalhos();
+  //   const avaliados = json;
+  //   setAvaliados(avaliados.length);
+  // }
+
+  // const checkNaoAvaliados = async () => {
+  //   const json = await axiosCheckNaoAvaliados()
+  //   const sem_avaliacao = json.data.quantidade;
+  //   setSem_avaliacao(sem_avaliacao);
+  // }
+
+  // const checkMedia = async () => {
+  //   const json = await axiosCheckMedia(window.sessionStorage.getItem('id'));
+  //   const { media } = json.data;
+  //   setMedia(media);
+  // }
 
   return (
     <Base>
