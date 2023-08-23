@@ -7,18 +7,28 @@ import { Base, Button, Heading, Questao } from "../components";
 const AvaliacaoProjeto = () => {
   const [titulo, setTitulo] = useState("");
   const [trabalho, setTrabalho] = useState("");
+  const [projetoAvaliado, setProjetoAvaliado] = useState(true)
   const [quest1, setQuest1] = useState(0);
   const [quest2, setQuest2] = useState(0);
   const [quest3, setQuest3] = useState(0);
   const [quest4, setQuest4] = useState(0);
   const authUser = auth()
   const navigate = useNavigate()
-  let projetoAvaliado = {}
-  let link = null
 
   useEffect(() => {
     async function fetchData() {
-      await jaFoiAvaliado()
+      const json = await axiosProjeto();
+
+      if (!json) {
+        setProjetoAvaliado(false)
+      } else {
+        const { idProjeto, titulo } = json;
+        setTrabalho(idProjeto);
+        setTitulo(titulo);
+
+        console.log(titulo)
+        console.log(trabalho)
+      }
     }
 
     fetchData()
@@ -28,20 +38,15 @@ const AvaliacaoProjeto = () => {
     const json = await axiosProjeto();
 
     if (!json) {
-      projetoAvaliado.status = false
-      projetoAvaliado.message = "Esse projeto já foi avaliado"
-      link = '/leitor'
+      projetoAvaliado = false
       return true
     } else {
       const { idProjeto, titulo } = json;
       setTrabalho(idProjeto);
       setTitulo(titulo);
-
       return false
     }
   }
-
-  console.log(projetoAvaliado)
 
   const handleSubmit = async () => {
 
@@ -61,8 +66,8 @@ const AvaliacaoProjeto = () => {
 
   return (
     <Base>
-      {!authUser.status && (<AuthPopup message={authUser.message} link={link ? link : '/'} />)}
-      {!projetoAvaliado.status && (<AuthPopup message={"Esse projeto já foi avaliado"} link={'/leitor'} />)}
+      {!authUser.status && (<AuthPopup message={authUser.message} link={'/'} />)}
+      {!projetoAvaliado && (<AuthPopup message={"Esse projeto já foi avaliado"} link={'/leitor'} />)}
       <Heading>{titulo}</Heading>
       <Questao
         titulo="Quão inovadora é a ideia?"
