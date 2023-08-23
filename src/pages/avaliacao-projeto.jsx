@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthPopup, auth } from "../auth";
 import { axiosAvaliado, axiosProjeto } from "../axios/axios-provider";
@@ -13,32 +13,35 @@ const AvaliacaoProjeto = () => {
   const [quest4, setQuest4] = useState(0);
   const authUser = auth()
   const navigate = useNavigate()
+  let projetoAvaliado = {}
   let link = null
 
+  useEffect(() => {
+    async function fetchData() {
+      await jaFoiAvaliado()
+    }
+
+    fetchData()
+  }, [])
 
   const jaFoiAvaliado = async () => {
     const json = await axiosProjeto();
 
-    if (json.idProjeto) {
-      const { idProjeto, titulo, erro } = json;
+    if (!json) {
+      projetoAvaliado.status = false
+      projetoAvaliado.message = "Esse projeto já foi avaliado"
+      link = '/leitor'
+      return true
+    } else {
+      const { idProjeto, titulo } = json;
       setTrabalho(idProjeto);
       setTitulo(titulo);
 
-      if (erro == 0) {
-        authUser.status = false
-        authUser.message = "Esse projeto já foi avaliado"
-        link = '/leitor'
-        return true
-      }
-
-      if (erro === 2) {
-        return false
-      }
-    } else {
-      authUser.status = false;
-      authUser.message = "Trabalho inválido";
+      return false
     }
   }
+
+  console.log(projetoAvaliado)
 
   const handleSubmit = async () => {
 
@@ -58,7 +61,8 @@ const AvaliacaoProjeto = () => {
 
   return (
     <Base>
-      {!authUser.status && (<AuthPopup message={authUser.message} link={ link ? link : '/' } />)}
+      {!authUser.status && (<AuthPopup message={authUser.message} link={link ? link : '/'} />)}
+      {!projetoAvaliado.status && (<AuthPopup message={"Esse projeto já foi avaliado"} link={'/leitor'} />)}
       <Heading>{titulo}</Heading>
       <Questao
         titulo="Quão inovadora é a ideia?"
@@ -87,7 +91,7 @@ const AvaliacaoProjeto = () => {
 
       {quest3 !== 0 && (
         <Questao
-          titulo="A forma como a ideia foi exposta(criatividade, informações,
+          titulo="Como a ideia foi exposta? (criatividade, informações,
             comunicação assertiva)"
           label={quest4}
           value={quest4}
