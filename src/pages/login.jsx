@@ -12,12 +12,12 @@ const Login = () => {
   useEffect(() => {
     window.sessionStorage.clear()
   }, [])
-  
+
   const handlerSubmit = async (e) => {
     e.preventDefault();
     await loginUsuario();
   }
-  
+
   const popupCloseHandler = (e) => {
     setVisibility(e);
   };
@@ -47,8 +47,8 @@ const Login = () => {
 
   return (
     <Base overlay={true}>
-    <PopUp title={"Acesso Negado"} display={visibility} onClose={popupCloseHandler}>Usuário ou senha inválidos</PopUp>
-    <Logo />
+      <PopUp title={"Acesso Negado"} display={visibility} onClose={popupCloseHandler}>Usuário ou senha inválidos</PopUp>
+      <Logo />
       <Form onSubmit={(e) => handlerSubmit(e)}>
         <Input
           type="text"

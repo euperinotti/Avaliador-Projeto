@@ -10,23 +10,16 @@ const VotacaoAberta = () => {
   const authUser = auth()
   const navigate = useNavigate()
 
-  useEffect(async () => {
-    await checkVoto()
-    await participante()
-
+  useEffect(() => {
     async function fetchData() {
-      try {
-        await checkVoto()
-        await participante()
-      } catch (e) {
-        console.log(e)
-      }
+      await checkVoto()
+      await participante()
     }
 
     fetchData()
-  });
+  }, []);
 
-  
+
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
