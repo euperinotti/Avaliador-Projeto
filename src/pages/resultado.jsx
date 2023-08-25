@@ -26,7 +26,7 @@ const Resultado = () => {
   }, []);
 
   return (
-    <Base>
+    <Base overlay={true}>
       {!authUser.status && (<AuthPopup message={authUser.message} />)}
       <TableContainer>
         <Tabela

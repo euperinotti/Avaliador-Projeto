@@ -31,32 +31,28 @@ const AvaliacaoProjeto = () => {
     fetchData()
   }, [])
 
-  const jaFoiAvaliado = async () => {
-    const json = await axiosProjeto();
+  // const jaFoiAvaliado = async () => {
+  //   const json = await axiosProjeto();
 
-    if (!json) {
-      setProjetoAvaliado(true)
-      return true
-    } else {
-      const { idProjeto, titulo } = json;
-      setTrabalho(idProjeto);
-      setTitulo(titulo);
-      return false
-    }
-  }
+  //   if (!json) {
+  //     setProjetoAvaliado(true)
+  //     return true
+  //   } else {
+  //     const { idProjeto, titulo } = json;
+  //     setTrabalho(idProjeto);
+  //     setTitulo(titulo);
+  //     return false
+  //   }
+  // }
 
   const handleSubmit = async () => {
 
-    const status = await jaFoiAvaliado()
+    const json = await axiosAvaliado(trabalho, quest1, quest2, quest3, quest4)
+    const { id_avaliacao } = json;
 
-    if (status) {
-      const json = await axiosAvaliado(trabalho, quest1, quest2, quest3, quest4)
-      const { id_avaliacao } = json;
-
-      if (id_avaliacao) {
-        window.sessionStorage.removeItem('trabalho');
-        navigate('/avaliador');
-      }
+    if (id_avaliacao) {
+      window.sessionStorage.removeItem('trabalho');
+      navigate('/avaliador');
     }
 
   }

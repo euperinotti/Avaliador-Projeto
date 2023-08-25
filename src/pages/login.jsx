@@ -46,7 +46,7 @@ const Login = () => {
   }
 
   return (
-    <Base>
+    <Base overlay={true}>
     <PopUp title={"Acesso Negado"} display={visibility} onClose={popupCloseHandler}>Usuário ou senha inválidos</PopUp>
     <Logo />
       <Form onSubmit={(e) => handlerSubmit(e)}>

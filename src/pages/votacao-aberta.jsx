@@ -77,7 +77,7 @@ const VotacaoAberta = () => {
   };
 
   return (
-    <Base>
+    <Base overlay={true}>
       {!authUser.status && (<AuthPopup message={authUser.message} />)}
       {!podeVotar && (<AuthPopup message={"Você já votou"} />)}
       <Logo />

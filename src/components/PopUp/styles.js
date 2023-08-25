@@ -11,7 +11,7 @@ ${
   margin: auto;
   background: rgba(0, 0, 0, 0.4);
   transition: opacity 100ms;
-  z-index: 1;
+  z-index: 999;
 `
 export const Popup = styled.div`
   ${theme.misc.thinBorder + theme.colors.third};

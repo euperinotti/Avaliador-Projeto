@@ -18,7 +18,7 @@ export default function Leitor() {
   };
 
   return (
-    <Base>
+    <Base overlay={true}>
       {!authUser.status && (<AuthPopup message={authUser.message} />)}
       <Heading>Aponte a câmera para o QrCode</Heading>
       {scan && (

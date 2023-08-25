@@ -45,7 +45,7 @@ export const AuthPopup = ({ message, link }) => {
     <PopUp
       title={"Acesso Negado"}
       display={true}
-      onClose={(e) => { navigate('/') }}
+      onClose={(e) => { link ? navigate(link) : navigate('/') }}
     >
       {message}
       <br />
