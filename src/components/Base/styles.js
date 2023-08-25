@@ -17,13 +17,16 @@ export const Content = styled.div`
   background-color: ${theme.colors.second};
   width: fit-content;
   height: fit-content;
-  max-height: 100vh;
   flex-direction: column;
   padding: ${theme.spacing.medium};
   margin: 0 ${theme.spacing.small};
   overflow: visible;
+
+  ${
+    props => props.overlay ? { maxHeight: "100vh", justifyContent: "center"} : {maxHeight: "80vh", justifyContent: "flex-start"}
+  }
+
   ${media.lessThan("medium")`
     overflow: scroll;
-    justify-content: center;
   `}
 `

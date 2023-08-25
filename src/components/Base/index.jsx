@@ -1,9 +1,9 @@
 import * as S from './styles'
 
-export const Base = ({ children }) => {
+export const Base = ({ children, overlay }) => {
   return (
     <S.Main>
-      <S.Content>
+      <S.Content overlay={overlay}>
         {children}
       </S.Content>
     </S.Main>
