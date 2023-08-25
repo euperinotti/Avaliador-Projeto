@@ -10,19 +10,20 @@ const Resultado = () => {
   const colunas = ["Trabalho", "Voto Popular", "Nota Final"];
   const authUser = authAvaliador();
 
-  const check = async () => {
-    const json = await axiosResultado();
+  useEffect(() => {
 
-    if (json) {
-      setResultadoProduto(json.filter((e) => e.categoria == 1).slice(0, 6))
-      setResultadoSolucao(json.filter((e) => e.categoria == 2).slice(0, 6))
-    } else {
-      alert('Nenhum resultado encontrado')
+    async function fetchData() {
+      const json = await axiosResultado();
+
+      if (json) {
+        setResultadoProduto(json.filter((e) => e.categoria == 1).slice(0, 6))
+        setResultadoSolucao(json.filter((e) => e.categoria == 2).slice(0, 6))
+      } else {
+        alert('Nenhum resultado encontrado')
+      }
     }
-  };
 
-  useEffect(async () => {
-    await check();
+    fetchData()
   }, []);
 
   return (
@@ -30,24 +31,24 @@ const Resultado = () => {
       {!authUser.status && (<AuthPopup message={authUser.message} />)}
       <TableContainer>
         <Tabela
-          resultado={resultadoProduto}
-          categoria="Produto"
+          data={resultadoProduto}
+          heading="Produto"
           colunas={colunas}
         />
 
         <br />
 
         <Tabela
-          resultado={resultadoSolucao}
-          categoria="Solução"
+          data={resultadoSolucao}
+          heading="Solução"
           colunas={colunas}
         />
 
         <br />
 
         <Tabela
-          resultado={resultadoSolucao}
-          categoria="Solução"
+          data={resultadoSolucao}
+          heading="Solução"
           colunas={colunas}
         />
       </TableContainer>

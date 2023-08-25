@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './app.css';
-import SemAvaliacao from "./components/SemAvaliacao";
+import SemAvaliacao from "./pages/sem-avaliacao";
 import AvaliacaoProjeto from "./pages/avaliacao-projeto";
 import Avaliador from "./pages/avaliador";
 import Leitor from "./pages/leitor";

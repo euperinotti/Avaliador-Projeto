@@ -19,5 +19,6 @@ export * from './Select'
 export * from './Tabela'
 export * from './TableHead'
 export * from './TableContainer'
+export * from './List'
 
 
