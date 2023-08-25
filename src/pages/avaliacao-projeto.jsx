@@ -7,7 +7,7 @@ import { Base, Button, Heading, Questao } from "../components";
 const AvaliacaoProjeto = () => {
   const [titulo, setTitulo] = useState("");
   const [trabalho, setTrabalho] = useState("");
-  const [projetoAvaliado, setProjetoAvaliado] = useState(true)
+  const [projetoAvaliado, setProjetoAvaliado] = useState(false)
   const [quest1, setQuest1] = useState(0);
   const [quest2, setQuest2] = useState(0);
   const [quest3, setQuest3] = useState(0);
@@ -20,14 +20,11 @@ const AvaliacaoProjeto = () => {
       const json = await axiosProjeto();
 
       if (!json) {
-        setProjetoAvaliado(false)
+        setProjetoAvaliado(true)
       } else {
         const { idProjeto, titulo } = json;
         setTrabalho(idProjeto);
         setTitulo(titulo);
-
-        console.log(titulo)
-        console.log(trabalho)
       }
     }
 
@@ -38,7 +35,7 @@ const AvaliacaoProjeto = () => {
     const json = await axiosProjeto();
 
     if (!json) {
-      projetoAvaliado = false
+      setProjetoAvaliado(true)
       return true
     } else {
       const { idProjeto, titulo } = json;
@@ -52,7 +49,7 @@ const AvaliacaoProjeto = () => {
 
     const status = await jaFoiAvaliado()
 
-    if (!status) {
+    if (status) {
       const json = await axiosAvaliado(trabalho, quest1, quest2, quest3, quest4)
       const { id_avaliacao } = json;
 
