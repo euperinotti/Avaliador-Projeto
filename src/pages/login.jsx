@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    window.localStorage.clear()
+    window.sessionStorage.clear()
   }, [])
   
   const handlerSubmit = async (e) => {
