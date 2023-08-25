@@ -64,7 +64,7 @@ const AvaliacaoProjeto = () => {
   return (
     <Base>
       {!authUser.status && (<AuthPopup message={authUser.message} link={'/'} />)}
-      {!projetoAvaliado && (<AuthPopup message={"Esse projeto já foi avaliado"} link={'/leitor'} />)}
+      {projetoAvaliado && (<AuthPopup message={"Projeto inválido ou já avaliado"} link={'/leitor'} />)}
       <Heading>{titulo}</Heading>
       <Questao
         titulo="Quão inovadora é a ideia?"
