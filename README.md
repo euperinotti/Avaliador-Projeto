@@ -1,4 +1,4 @@
-# Summit Avaliacao
+# Avaliador de Projetos
 
 ## Comandos
 - ```npm install``` - instalar dependências
