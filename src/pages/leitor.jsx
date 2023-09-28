@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BarcodeScannerComponent from "react-qr-barcode-scanner";
+
 import { useNavigate } from "react-router-dom";
 import { auth, AuthPopup } from "../auth";
 import { Base, Heading } from "../components";
@@ -21,7 +21,7 @@ export default function Leitor() {
     <Base overlay={true}>
       {!authUser.status && (<AuthPopup message={authUser.message} />)}
       <Heading>Aponte a câmera para o QrCode</Heading>
-      {scan && (
+      {/* {scan && (
         <BarcodeScannerComponent
           onUpdate={handleUpdate}
         />
@@ -31,7 +31,7 @@ export default function Leitor() {
           window.sessionStorage.setItem('trabalho', log)
           navigate('/avaliacao-projeto')
         })}
-      </div>
+      </div> */}
     </Base>
   );
 }

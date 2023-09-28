@@ -5,3 +5,6 @@ export const Image = styled.img`
   max-width: 470px;
   margin-bottom: 1.5rem;
 `
+export const Heading = styled.h1`
+color: white
+`

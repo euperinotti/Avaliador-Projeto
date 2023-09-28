@@ -1,4 +1,4 @@
-import BarcodeScannerComponent from "react-qr-barcode-scanner";
+
 
 export const LeitorQr = () => {
 
@@ -14,8 +14,6 @@ export const LeitorQr = () => {
   };
 
   return (
-    <BarcodeScannerComponent
-      onUpdate={handleUpdate}
-    />
+    <div></div>
   )
 }
