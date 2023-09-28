@@ -20,7 +20,9 @@
     "@types/react-dom": "^17.0.9",
     "@types/styled-components": "^5.1.26",
     "eslint": "^8.50.0",
-    "eslint-plugin-react": "^7.33.2"
+    "eslint-plugin-react": "^7.33.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1"
   },
   "scripts": {
     "start": "PORT=5000 react-scripts start",
