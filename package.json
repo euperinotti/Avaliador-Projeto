@@ -42,7 +42,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "echo 'Starting husky' && lint-staged"
+      "pre-commit": "echo 'Starting husky' && yarn lint-staged"
     }
   },
   "lint-staged": {
