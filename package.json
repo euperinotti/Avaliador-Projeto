@@ -21,7 +21,7 @@
     "@types/styled-components": "^5.1.26",
     "eslint": "^8.50.0",
     "eslint-plugin-react": "^7.33.2",
-    "husky": "^8.0.3",
+    "husky": "4",
     "lint-staged": "^14.0.1"
   },
   "scripts": {
@@ -46,7 +46,13 @@
     }
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"],
-    "*.jsx": ["eslint --fix", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.jsx": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
