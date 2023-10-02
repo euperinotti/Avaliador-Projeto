@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = 'https://www4.fag.edu.br/api_summit/src/rotas/'
+const URL = ''
 
 const init = () => {
   const token = window.sessionStorage.getItem('token')
